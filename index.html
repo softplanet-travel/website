@@ -99,10 +99,11 @@ const {
 } = await supabase.auth.getSession();
 
 if (session) {
-  loginBtn.innerText =
-    "我的 ";
-    (session.user.user_metadata.full_name ||
-      session.user.email);
+    loginBtn.innerText = "我的";
+
+    loginBtn.onclick = () => {
+        window.location.href = "my.html";
+    };
 }
 </script>
 </body>
