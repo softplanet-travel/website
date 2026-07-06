@@ -79,10 +79,17 @@ async function loadTrips(){
   }
 
   tripList.innerHTML = data.map(trip => `
-    <div class="trip">
-      <strong>${trip.title || ""}</strong>
-    </div>
-  `).join("");
+  <div class="trip">
+    <strong>${trip.title || ""}</strong>
+
+    <br><br>
+
+    <button onclick="deleteTrip('${trip.id}')">
+      🗑️ 刪除
+    </button>
+
+  </div>
+`).join("");
 }
 
 addTripBtn.onclick = async function(){
@@ -114,7 +121,24 @@ addTripBtn.onclick = async function(){
   document.getElementById("title").value = "";
   loadTrips();
 };
+async function deleteTrip(id){
 
+  if(!confirm("確定要刪除這個旅行？")){
+    return;
+  }
+
+  const { error } = await window.spClient
+    .from("trips")
+    .delete()
+    .eq("id", id);
+
+  if(error){
+    alert(error.message);
+    return;
+  }
+
+  loadTrips();
+}
 loadTrips();
 </script>
 
