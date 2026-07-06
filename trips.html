@@ -82,7 +82,9 @@ async function loadTrips(){
   `).join("");
 }
 
-document.getElementById("addTrip").addEventListener("click", async () => {
+async function addTrip() {
+  alert("有點到建立旅行");
+
   const user = await getUser();
   if (!user) return;
 
@@ -97,10 +99,24 @@ document.getElementById("addTrip").addEventListener("click", async () => {
 
   const { error } = await supabase.from("trips").insert({
     user_id: user.id,
-    title,
-    country,
-    city
+    title: title,
+    country: country,
+    city: city
   });
+
+  if (error) {
+    alert("新增失敗：" + error.message);
+    return;
+  }
+
+  alert("新增成功");
+
+  document.getElementById("title").value = "";
+  document.getElementById("country").value = "";
+  document.getElementById("city").value = "";
+
+  loadTrips();
+}
 
   if (error) {
     alert("新增失敗：" + error.message);
