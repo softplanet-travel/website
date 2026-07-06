@@ -64,9 +64,51 @@ button{
 親子旅行 × 自由行攻略 × 美食 × 景點 × 行程規劃
 </p>
 
-<button>開始探索</button>
+<button id="google-login">
+    使用 Google 登入
+</button>
 
 </section>
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
+const supabase = createClient(
+  "https://ftlpxesmzchwzeurmup.supabase.co",
+  "sb_publishable_5fxS5Fm4dqXNFIMyVtTm0w_gnncuTRh"
+);
+
+const loginBtn = document.getElementById("google-login");
+
+if (loginBtn) {
+  loginBtn.addEventListener("click", async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin
+      }
+    });
+
+    if (error) {
+      alert(error.message);
+    }
+  });
+}
+
+const {
+  data: { session },
+} = await supabase.auth.getSession();
+
+if (session) {
+  loginBtn.innerText =
+    "歡迎 " +
+    (session.user.user_metadata.full_name ||
+      session.user.email);
+}
+</script>
 </body>
 </html>
+
+
+
+
+
