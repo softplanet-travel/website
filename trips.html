@@ -47,7 +47,7 @@ input{
 
 button{
     background:#4db6ac;
-    color:#fff;
+    color:white;
     border:none;
     padding:12px 24px;
     border-radius:8px;
@@ -58,8 +58,12 @@ button{
     padding:15px;
     border-bottom:1px solid #eee;
 }
-</style>
 
+.small{
+    color:#777;
+    font-size:14px;
+}
+</style>
 </head>
 
 <body>
@@ -73,24 +77,18 @@ button{
 <div class="card">
 <h2>新增旅行</h2>
 
-<input id="title" placeholder="旅行名稱">
-<input id="country" placeholder="國家">
-<input id="city" placeholder="城市">
+<input id="title" placeholder="旅行名稱，例如：釜山五天四夜">
+<input id="country" placeholder="國家，例如：韓國">
+<input id="city" placeholder="城市，例如：釜山">
 
-<button onclick="addTrip()">
-建立旅行
-</button>
+<button id="addTripBtn">建立旅行</button>
 
+<p class="small" id="statusText"></p>
 </div>
 
 <div class="card">
-
 <h2>旅行清單</h2>
-
-<div id="tripList">
-載入中...
-</div>
-
+<div id="tripList">載入中...</div>
 </div>
 
 </div>
@@ -98,110 +96,102 @@ button{
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
 const supabase = window.supabase.createClient(
-"https://ftlpxesmzchwzeurmupr.supabase.co",
-"sb_publishable_5fxS5Fm4dqXNFIMyVtTm0w_gnncuTRh"
+  "https://ftlpxesmzchwzeurmupr.supabase.co",
+  "sb_publishable_5fxS5Fm4dqXNFIMyVtTm0w_gnncuTRh"
 );
 
-async function getUser(){
+const addTripBtn = document.getElementById("addTripBtn");
+const statusText = document.getElementById("statusText");
+const tripList = document.getElementById("tripList");
 
-    const { data } = await supabase.auth.getUser();
+async function getUser(){
+    const { data, error } = await supabase.auth.getUser();
+
+    if(error){
+        statusText.innerText = "登入狀態讀取失敗：" + error.message;
+        return null;
+    }
 
     if(!data.user){
-        alert("請先登入");
-        location.href="index.html";
+        statusText.innerText = "請先回首頁登入。";
         return null;
     }
 
     return data.user;
-
 }
 
 async function loadTrips(){
-
     const user = await getUser();
+    if(!user){
+        tripList.innerHTML = "請先登入後查看旅行。";
+        return;
+    }
 
-    if(!user) return;
-
-    const { data,error } = await supabase
-    .from("trips")
-    .select("*")
-    .eq("user_id",user.id)
-    .order("created_at",{ascending:false});
-
-    const list=document.getElementById("tripList");
+    const { data, error } = await supabase
+        .from("trips")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending:false });
 
     if(error){
-        list.innerHTML=error.message;
+        tripList.innerHTML = "讀取失敗：" + error.message;
         return;
     }
 
-    if(data.length===0){
-        list.innerHTML="目前還沒有旅行";
+    if(!data || data.length === 0){
+        tripList.innerHTML = "目前還沒有建立任何旅行。";
         return;
     }
 
-    list.innerHTML="";
-
-    data.forEach(trip=>{
-
-        list.innerHTML+=`
+    tripList.innerHTML = data.map(trip => `
         <div class="trip">
-        <b>${trip.title}</b><br>
-        ${trip.country} ${trip.city}
+            <strong>${trip.title || ""}</strong><br>
+            ${trip.country || ""} ${trip.city || ""}
         </div>
-        `;
-
-    });
-
+    `).join("");
 }
 
-async function addTrip(){
+addTripBtn.addEventListener("click", async function(){
+    statusText.innerText = "正在建立旅行...";
 
-    alert("有點到");
-
-    const user=await getUser();
-
+    const user = await getUser();
     if(!user) return;
 
-    const title=document.getElementById("title").value.trim();
-    const country=document.getElementById("country").value.trim();
-    const city=document.getElementById("city").value.trim();
+    const title = document.getElementById("title").value.trim();
+    const country = document.getElementById("country").value.trim();
+    const city = document.getElementById("city").value.trim();
 
-    if(title===""){
-        alert("請輸入旅行名稱");
+    if(!title){
+        statusText.innerText = "請輸入旅行名稱。";
         return;
     }
 
     const { error } = await supabase
-    .from("trips")
-    .insert({
-        user_id:user.id,
-        title:title,
-        country:country,
-        city:city
-    });
+        .from("trips")
+        .insert({
+            user_id: user.id,
+            title: title,
+            country: country,
+            city: city
+        });
 
     if(error){
-        alert(error.message);
+        statusText.innerText = "新增失敗：" + error.message;
         return;
     }
 
-    alert("新增成功");
+    statusText.innerText = "新增成功。";
 
-    document.getElementById("title").value="";
-    document.getElementById("country").value="";
-    document.getElementById("city").value="";
+    document.getElementById("title").value = "";
+    document.getElementById("country").value = "";
+    document.getElementById("city").value = "";
 
     loadTrips();
-
-}
+});
 
 loadTrips();
-
 </script>
 
 </body>
-
 </html>
