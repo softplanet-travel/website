@@ -107,10 +107,12 @@ async function loadTripPlaces(){
   placeList.innerHTML = data.map(item => {
     const name = PLACE_NAMES[item.place_id] || item.place_id;
     return `
-      <div class="item">
-        📍 ${name}
-      </div>
-    `;
+  <a href="spot-test.html" style="text-decoration:none;color:#111;">
+    <div class="item">
+      📍 ${name}
+    </div>
+  </a>
+`;
   }).join("");
 }
 
