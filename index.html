@@ -124,6 +124,13 @@ loginBtn.addEventListener("click", async () => {
         }
     }
 });
+supabase.auth.onAuthStateChange((event, session) => {
+    if (session) {
+        loginBtn.innerText = "我的";
+    } else {
+        loginBtn.innerText = "使用 Google 登入";
+    }
+});    
 </script>
 </body>
 </html>
