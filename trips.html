@@ -1,194 +1,119 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>我的旅行</title>
-
 <style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#faf8f4;
-}
-
-header{
-    background:#fff;
-    padding:20px;
-    text-align:center;
-    font-size:28px;
-    font-weight:bold;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-.container{
-    max-width:1000px;
-    margin:40px auto;
-    padding:20px;
-}
-
-.card{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border:1px solid #ddd;
-    border-radius:8px;
-    box-sizing:border-box;
-}
-
-button{
-    background:#4db6ac;
-    color:white;
-    border:none;
-    padding:12px 24px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.trip{
-    padding:15px;
-    border-bottom:1px solid #eee;
-}
-
-.small{
-    color:#777;
-    font-size:14px;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#faf8f4;}
+header{background:#fff;padding:20px;text-align:center;font-size:28px;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.container{max-width:1000px;margin:40px auto;padding:20px;}
+.card{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;box-sizing:border-box;}
+button{background:#4db6ac;color:white;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;}
+.trip{padding:15px;border-bottom:1px solid #eee;}
+.small{color:#777;font-size:14px;}
 </style>
 </head>
 
 <body>
 
-<header>
-🧳 我的旅行
-</header>
+<header>🧳 我的旅行</header>
 
 <div class="container">
+  <div class="card">
+    <h2>新增旅行</h2>
+    <input id="title" placeholder="旅行名稱，例如：釜山五天四夜">
+    <button id="addTripBtn">建立旅行</button>
+    <p class="small" id="statusText"></p>
+  </div>
 
-<div class="card">
-<h2>新增旅行</h2>
-
-<input id="title" placeholder="旅行名稱，例如：釜山五天四夜">
-<input id="country" placeholder="國家，例如：韓國">
-<input id="city" placeholder="城市，例如：釜山">
-
-<button id="addTripBtn">建立旅行</button>
-
-<p class="small" id="statusText"></p>
-</div>
-
-<div class="card">
-<h2>旅行清單</h2>
-<div id="tripList">載入中...</div>
-</div>
-
+  <div class="card">
+    <h2>旅行清單</h2>
+    <div id="tripList">載入中...</div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const supabase = window.supabase.createClient(
+window.spClient = window.supabase.createClient(
   "https://ftlpxesmzchwzeurmupr.supabase.co",
   "sb_publishable_5fxS5Fm4dqXNFIMyVtTm0w_gnncuTRh"
 );
 
-const addTripBtn = document.getElementById("addTripBtn");
-const statusText = document.getElementById("statusText");
-const tripList = document.getElementById("tripList");
+var addTripBtn = document.getElementById("addTripBtn");
+var statusText = document.getElementById("statusText");
+var tripList = document.getElementById("tripList");
 
 async function getUser(){
-    const { data, error } = await supabase.auth.getUser();
-
-    if(error){
-        statusText.innerText = "登入狀態讀取失敗：" + error.message;
-        return null;
-    }
-
-    if(!data.user){
-        statusText.innerText = "請先回首頁登入。";
-        return null;
-    }
-
-    return data.user;
+  const { data } = await window.spClient.auth.getUser();
+  if(!data.user){
+    statusText.innerText = "請先回首頁登入。";
+    return null;
+  }
+  return data.user;
 }
 
 async function loadTrips(){
-    const user = await getUser();
-    if(!user){
-        tripList.innerHTML = "請先登入後查看旅行。";
-        return;
-    }
+  const user = await getUser();
+  if(!user){
+    tripList.innerHTML = "請先登入後查看旅行。";
+    return;
+  }
 
-    const { data, error } = await supabase
-        .from("trips")
-        .select("*")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending:false });
+  const { data, error } = await window.spClient
+    .from("trips")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending:false });
 
-    if(error){
-        tripList.innerHTML = "讀取失敗：" + error.message;
-        return;
-    }
+  if(error){
+    tripList.innerHTML = "讀取失敗：" + error.message;
+    return;
+  }
 
-    if(!data || data.length === 0){
-        tripList.innerHTML = "目前還沒有建立任何旅行。";
-        return;
-    }
+  if(!data || data.length === 0){
+    tripList.innerHTML = "目前還沒有建立任何旅行。";
+    return;
+  }
 
-    tripList.innerHTML = data.map(trip => `
-        <div class="trip">
-            <strong>${trip.title || ""}</strong><br>
-            ${trip.country || ""} ${trip.city || ""}
-        </div>
-    `).join("");
+  tripList.innerHTML = data.map(trip => `
+    <div class="trip">
+      <strong>${trip.title || ""}</strong>
+    </div>
+  `).join("");
 }
 
-addTripBtn.addEventListener("click", async function(){
-    statusText.innerText = "正在建立旅行...";
+addTripBtn.onclick = async function(){
+  statusText.innerText = "正在建立旅行...";
 
-    const user = await getUser();
-    if(!user) return;
+  const user = await getUser();
+  if(!user) return;
 
-    const title = document.getElementById("title").value.trim();
-    const country = document.getElementById("country").value.trim();
-    const city = document.getElementById("city").value.trim();
+  const title = document.getElementById("title").value.trim();
 
-    if(!title){
-        statusText.innerText = "請輸入旅行名稱。";
-        return;
-    }
+  if(!title){
+    statusText.innerText = "請輸入旅行名稱。";
+    return;
+  }
 
-    const { error } = await supabase
-        .from("trips")
-        .insert({
-            user_id: user.id,
-            title: title,
-            country: country,
-            city: city
-        });
+  const { error } = await window.spClient
+    .from("trips")
+    .insert({
+      user_id: user.id,
+      title: title
+    });
 
-    if(error){
-        statusText.innerText = "新增失敗：" + error.message;
-        return;
-    }
+  if(error){
+    statusText.innerText = "新增失敗：" + error.message;
+    return;
+  }
 
-    statusText.innerText = "新增成功。";
-
-    document.getElementById("title").value = "";
-    document.getElementById("country").value = "";
-    document.getElementById("city").value = "";
-
-    loadTrips();
-});
+  statusText.innerText = "新增成功。";
+  document.getElementById("title").value = "";
+  loadTrips();
+};
 
 loadTrips();
 </script>
