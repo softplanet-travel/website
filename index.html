@@ -100,11 +100,30 @@ const {
 
 if (session) {
     loginBtn.innerText = "我的";
-
-    loginBtn.onclick = () => {
-        window.location.href = "my.html";
-    };
 }
+
+loginBtn.addEventListener("click", async () => {
+
+    const {
+        data: { session }
+    } = await supabase.auth.getSession();
+
+    if (session) {
+        window.location.href = "my.html";
+    } else {
+
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+                redirectTo: window.location.origin
+            }
+        });
+
+        if (error) {
+            alert(error.message);
+        }
+    }
+});
 </script>
 </body>
 </html>
