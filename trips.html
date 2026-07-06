@@ -80,7 +80,9 @@ async function loadTrips(){
 
   tripList.innerHTML = data.map(trip => `
   <div class="trip">
-    <strong>${trip.title || ""}</strong>
+    <a href="trip.html?id=${trip.id}" style="color:#111;text-decoration:none;">
+  <strong>${trip.title || ""}</strong>
+</a>
 
     <br><br>
 
