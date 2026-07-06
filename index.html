@@ -4,263 +4,209 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SoftPlanet 柔軟星球</title>
-
-  <style>
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Arial,"Noto Sans TC",sans-serif;
-      background:#faf7f0;
-      color:#3f3428;
-      padding-bottom:86px;
-    }
-    a{text-decoration:none;color:inherit}
-    .page{max-width:480px;margin:0 auto;background:#faf7f0;min-height:100vh}
-
-    header{
-      height:64px;
-      padding:0 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      background:#fffaf2;
-      position:sticky;
-      top:0;
-      z-index:20;
-      box-shadow:0 2px 12px rgba(80,60,40,.08);
-    }
-    .logo{font-weight:800;font-size:20px}
-    .header-actions{display:flex;gap:12px;font-size:22px}
-
-    .hero{
-      margin:18px;
-      height:260px;
-      border-radius:28px;
-      background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.25)),
-      url("assets/hero/hero_tokyo.webp") center/cover;
-      display:flex;
-      align-items:flex-end;
-      padding:24px;
-      color:white;
-      overflow:hidden;
-    }
-    .hero h1{margin:0 0 8px;font-size:30px;line-height:1.2}
-    .hero p{margin:0;font-size:15px;line-height:1.6}
-
-    .cta-row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      padding:0 18px 22px;
-    }
-    .cta-card{
-      min-height:150px;
-      border-radius:24px;
-      padding:18px;
-      background:#fff;
-      box-shadow:0 8px 22px rgba(90,65,40,.1);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .cta-card:first-child{background:#fff4dd}
-    .cta-card:last-child{background:#ffe9dc}
-    .cta-icon{font-size:30px}
-    .cta-card h2{font-size:18px;margin:8px 0 6px}
-    .cta-card p{font-size:13px;line-height:1.45;margin:0;color:#6f5b46}
-    .cta-link{font-size:13px;font-weight:700;margin-top:12px}
-
-    section{padding:0 18px 24px}
-    .section-title{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:14px;
-    }
-    .section-title h2{margin:0;font-size:22px}
-    .section-title span{font-size:13px;color:#9a8064}
-
-    .trip-scroll{
-      display:flex;
-      gap:14px;
-      overflow-x:auto;
-      padding-bottom:4px;
-    }
-    .trip-card{
-      min-width:220px;
-      background:white;
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow:0 8px 22px rgba(90,65,40,.1);
-    }
-    .trip-img{
-      height:120px;
-      background:#e8dccf center/cover;
-    }
-    .trip-body{padding:14px}
-    .tag{font-size:12px;color:#b17842;font-weight:700}
-    .trip-body h3{margin:6px 0;font-size:17px}
-    .trip-body p{margin:0;color:#76614c;font-size:13px;line-height:1.45}
-
-    .function-block{
-      background:#fff;
-      border-radius:26px;
-      padding:20px;
-      box-shadow:0 8px 22px rgba(90,65,40,.08);
-      margin-bottom:18px;
-    }
-    .function-block h2{margin:0 0 8px;font-size:22px}
-    .function-block p{margin:0;color:#715d49;line-height:1.6;font-size:14px}
-
-    .bottom-nav{
-      position:fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      background:#fffaf2;
-      box-shadow:0 -4px 18px rgba(80,60,40,.12);
-      z-index:30;
-    }
-    .bottom-nav-inner{
-      max-width:480px;
-      margin:0 auto;
-      height:76px;
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      align-items:center;
-    }
-    .nav-item{
-      text-align:center;
-      font-size:11px;
-      color:#8b765f;
-    }
-    .nav-item div{font-size:22px;margin-bottom:4px}
-    .nav-item.active{color:#d38443;font-weight:700}
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <div class="page">
+  <div class="app">
 
-    <header>
-      <div class="logo">SoftPlanet</div>
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-bear">🐻</div>
+        <div>
+          <div class="brand-name">SoftPlanet</div>
+          <div class="brand-subtitle">柔軟星球</div>
+        </div>
+      </div>
+
       <div class="header-actions">
-        <span>🔍</span>
-        <span>☰</span>
+        <button class="icon-btn" aria-label="分享">⌯</button>
+        <button class="icon-btn" aria-label="選單">☰</button>
       </div>
     </header>
 
     <main>
+
       <section class="hero">
-        <div>
-          <h1>世界很大，<br>我陪你慢慢看。</h1>
-          <p>親子自由行、城市靈感、行程規劃與行李攻略，一次整理好。</p>
+        <div class="hero-text">
+          <h1>今天想去哪裡？</h1>
+          <p>世界很大，<br>我陪你慢慢看。</p>
         </div>
+        <div class="hero-bear">🐻</div>
       </section>
 
-      <div class="cta-row">
-        <a href="#" class="cta-card">
-          <div>
-            <div class="cta-icon">💡</div>
-            <h2>我要旅行靈感</h2>
-            <p>探索城市、景點、美食、住宿與攻略。</p>
-          </div>
-          <div class="cta-link">開始探索 →</div>
+      <section class="cta-grid">
+        <a class="cta-card cta-inspiration" href="#">
+          <div class="cta-icon">💡</div>
+          <h2>我要旅行靈感</h2>
+          <p>找景點、美食、住宿與攻略。</p>
+          <span>開始探索 →</span>
         </a>
 
-        <a href="#" class="cta-card">
-          <div>
-            <div class="cta-icon">🗺️</div>
-            <h2>幫我規劃行程</h2>
-            <p>快速整理適合你的旅行方向與行程。</p>
-          </div>
-          <div class="cta-link">立即規劃 →</div>
+        <a class="cta-card cta-planner" href="#">
+          <div class="cta-icon">🗺️</div>
+          <h2>幫我規劃行程</h2>
+          <p>回答幾個問題，快速規劃旅程。</p>
+          <span>立即規劃 →</span>
         </a>
-      </div>
+      </section>
 
-      <section>
-        <div class="section-title">
-          <h2>熱門行程</h2>
-          <span>查看更多</span>
+      <section class="popular-trips">
+        <div class="section-head">
+          <h2>🔥 熱門行程</h2>
+          <a href="#">查看更多 ›</a>
         </div>
 
         <div class="trip-scroll">
-          <a href="#" class="trip-card">
-            <div class="trip-img" style="background-image:url('assets/cities/tokyo.webp')"></div>
-            <div class="trip-body">
-              <div class="tag">東京｜5天4夜</div>
-              <h3>東京親子美食之旅</h3>
-              <p>第一次去東京也能輕鬆安排。</p>
+          <article class="trip-card">
+            <div class="trip-image trip-tokyo"></div>
+            <div class="trip-content">
+              <div class="trip-tag">日本・東京</div>
+              <h3>東京5天4夜美食之旅</h3>
+              <p>美食與親子一次滿足！</p>
+              <button class="heart-btn">♡</button>
             </div>
-          </a>
+          </article>
 
-          <a href="#" class="trip-card">
-            <div class="trip-img" style="background-image:url('assets/cities/okinawa.webp')"></div>
-            <div class="trip-body">
-              <div class="tag">沖繩｜5天4夜</div>
-              <h3>沖繩放鬆親子行</h3>
-              <p>海景、親子景點與慢旅行。</p>
+          <article class="trip-card">
+            <div class="trip-image trip-okinawa"></div>
+            <div class="trip-content">
+              <div class="trip-tag">沖繩</div>
+              <h3>沖繩5天4夜自駕遊</h3>
+              <p>海島放鬆之旅</p>
+              <button class="heart-btn">♡</button>
             </div>
-          </a>
+          </article>
 
-          <a href="#" class="trip-card">
-            <div class="trip-img" style="background-image:url('assets/cities/seoul.webp')"></div>
-            <div class="trip-body">
-              <div class="tag">首爾｜4天3夜</div>
-              <h3>首爾美食購物行</h3>
-              <p>適合第一次自由行的新手路線。</p>
+          <article class="trip-card">
+            <div class="trip-image trip-seoul"></div>
+            <div class="trip-content">
+              <div class="trip-tag">韓國・首爾</div>
+              <h3>首爾5天4夜自由行</h3>
+              <p>購物美食全攻略</p>
+              <button class="heart-btn">♡</button>
             </div>
-          </a>
+          </article>
+
+          <article class="trip-card">
+            <div class="trip-image trip-hongkong"></div>
+            <div class="trip-content">
+              <div class="trip-tag">香港</div>
+              <h3>香港4天3夜美食購物</h3>
+              <p>港式美食不能錯過</p>
+              <button class="heart-btn">♡</button>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section>
-        <div class="function-block">
-          <h2>行程規劃器</h2>
-          <p>建立旅行、安排天數、新增景點、調整順序，慢慢完成自己的專屬行程。</p>
+      <section class="feature-hero-row">
+        <div class="feature-card">
+          <h3>旅行靈感頁</h3>
+          <p>找靈感，讓旅行更美好！</p>
         </div>
 
-        <div class="function-block">
-          <h2>旅行靈感庫</h2>
-          <p>依城市探索景點、美食、住宿、票券、伴手禮與完整攻略。</p>
+        <div class="feature-card">
+          <h3>行程規劃器</h3>
+          <p>回答幾個問題，幫你快速規劃行程！</p>
         </div>
 
-        <div class="function-block">
-          <h2>行李攻略</h2>
-          <p>整理親子旅行、短天數旅行、季節旅行需要準備的物品清單。</p>
+        <div class="feature-card">
+          <h3>行李攻略</h3>
+          <p>打包不煩惱，出發更輕鬆！</p>
         </div>
 
-        <div class="function-block">
-          <h2>我的</h2>
-          <p>收藏、我的旅行、成就、會員資料與設定集中管理。</p>
+        <div class="feature-card">
+          <h3>我的</h3>
+          <p>歡迎回來，一起記錄你的旅程！</p>
         </div>
       </section>
+
+      <section class="my-trip-section">
+        <h2>我的旅行</h2>
+        <div class="planner-card">
+          <div class="planner-title">
+            <span>東京5天4夜自由行</span>
+            <button>分享</button>
+          </div>
+
+          <div class="day-tabs">
+            <button class="active">Day 1</button>
+            <button>Day 2</button>
+            <button>Day 3</button>
+            <button>Day 4</button>
+            <button>Day 5</button>
+          </div>
+
+          <ul class="trip-list">
+            <li>淺草寺 <span>⋮</span></li>
+            <li>仲見世通 <span>⋮</span></li>
+            <li>藍瓶咖啡 Blue Bottle <span>⋮</span></li>
+            <li>OMO3 淺草 by 星野集團 <span>⋮</span></li>
+          </ul>
+
+          <button class="add-item-btn">＋ 加入項目</button>
+        </div>
+      </section>
+
+      <section class="achievement-section">
+        <h2>成就系統</h2>
+        <div class="badge-grid">
+          <div class="badge-card">🏅<span>東京探索者</span></div>
+          <div class="badge-card">🥈<span>日本成就者</span></div>
+          <div class="badge-card">🥉<span>沖繩探索者</span></div>
+          <div class="badge-card">🏆<span>首爾達人</span></div>
+        </div>
+      </section>
+
+      <section class="member-section">
+        <h2>我的</h2>
+        <div class="member-card">
+          <div class="avatar">🐻</div>
+          <div>
+            <p><strong>Joy</strong></p>
+            <p>joy@example.com</p>
+            <p>0912-345-678</p>
+          </div>
+        </div>
+
+        <div class="member-menu">
+          <a href="#">我的資料</a>
+          <a href="#">我的收藏</a>
+          <a href="#">我的旅行</a>
+          <a href="#">旅行急救包</a>
+          <a href="#">優惠退稅 Line</a>
+          <a href="#">設定</a>
+        </div>
+      </section>
+
     </main>
-  </div>
 
-  <nav class="bottom-nav">
-    <div class="bottom-nav-inner">
-      <a class="nav-item active" href="#">
-        <div>🏠</div>
+    <nav class="bottom-nav">
+      <a class="active" href="#">
+        <span>🏠</span>
         首頁
       </a>
-      <a class="nav-item" href="#">
-        <div>🗓️</div>
+      <a href="#">
+        <span>🗓️</span>
         行程規劃
       </a>
-      <a class="nav-item" href="#">
-        <div>💡</div>
+      <a href="#">
+        <span>💡</span>
         旅行靈感
       </a>
-      <a class="nav-item" href="#">
-        <div>🧳</div>
+      <a href="#">
+        <span>🧳</span>
         行李攻略
       </a>
-      <a class="nav-item" href="#">
-        <div>👤</div>
+      <a href="#">
+        <span>👤</span>
         我的
       </a>
-    </div>
-  </nav>
+    </nav>
+
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
