@@ -4,110 +4,244 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>測試景點收藏</title>
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#faf8f4;}
-header{background:#fff;padding:20px;text-align:center;font-size:28px;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,.08);}
-.container{max-width:900px;margin:40px auto;padding:20px;}
-.card{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 10px rgba(0,0,0,.08);}
-button,select{padding:12px;margin-top:12px;border-radius:8px;}
-button{background:#4db6ac;color:white;border:none;cursor:pointer;}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#faf8f4;
+}
+
+header{
+    background:#fff;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.container{
+    max-width:900px;
+    margin:40px auto;
+    padding:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:24px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+select{
+    padding:12px;
+    border-radius:8px;
+    font-size:16px;
+}
+
+button{
+    margin-top:15px;
+    padding:14px 24px;
+    background:#4db6ac;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+#status{
+    margin-top:20px;
+    color:#666;
+}
 </style>
+
 </head>
 
 <body>
 
-<header>📍 測試景點收藏</header>
+<header>
+📍 測試景點收藏
+</header>
 
 <div class="container">
+
 <div class="card">
+
 <h2>東京晴空塔</h2>
+
 <p>這是一個測試景點。</p>
 
-<select id="tripSelect">
-<option value="">載入旅行中...</option>
-</select>
+<select id="tripSelect"></select>
 
 <br>
 
-<button id="saveBtn">❤️ 收藏到旅行</button>
+<button id="favoriteBtn">
+🤍 收藏到旅行
+</button>
 
-<p id="status"></p>
+<div id="status"></div>
+
 </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-window.spClient = window.supabase.createClient(
+
+window.spClient=window.supabase.createClient(
 "https://ftlpxesmzchwzeurmupr.supabase.co",
 "sb_publishable_5fxS5Fm4dqXNFIMyVtTm0w_gnncuTRh"
 );
 
-const PLACE_ID = "tokyo-skytree";
-const tripSelect = document.getElementById("tripSelect");
-const statusText = document.getElementById("status");
+const PLACE_ID="tokyo-skytree";
+
+let currentUser=null;
+let currentFavorite=null;
 
 async function getUser(){
-  const { data } = await window.spClient.auth.getUser();
-  if(!data.user){
-    statusText.innerText = "請先回首頁登入。";
-    return null;
-  }
-  return data.user;
+
+const {data}=await window.spClient.auth.getUser();
+
+if(!data.user){
+
+location.href="index.html";
+
+return null;
+
+}
+
+currentUser=data.user;
+
+return data.user;
+
 }
 
 async function loadTrips(){
-  const user = await getUser();
-  if(!user) return;
 
-  const { data, error } = await window.spClient
-    .from("trips")
-    .select("*")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending:false });
+const {data}=await window.spClient
+.from("trips")
+.select("*")
+.eq("user_id",currentUser.id)
+.order("created_at",{ascending:false});
 
-  if(error){
-    statusText.innerText = error.message;
-    return;
-  }
+const select=document.getElementById("tripSelect");
 
-  if(!data || data.length === 0){
-    tripSelect.innerHTML = `<option value="">請先建立旅行</option>`;
-    return;
-  }
+select.innerHTML="";
 
-  tripSelect.innerHTML = data.map(trip =>
-    `<option value="${trip.id}">${trip.title}</option>`
-  ).join("");
+data.forEach(trip=>{
+
+select.innerHTML+=`
+<option value="${trip.id}">
+${trip.title}
+</option>
+`;
+
+});
+
+checkFavorite();
+
 }
 
-document.getElementById("saveBtn").onclick = async function(){
-  const user = await getUser();
-  if(!user) return;
+async function checkFavorite(){
 
-  const tripId = tripSelect.value;
+const tripId=document.getElementById("tripSelect").value;
 
-  if(!tripId){
-    statusText.innerText = "請先選擇旅行。";
-    return;
-  }
+const {data}=await window.spClient
+.from("trip_places")
+.select("*")
+.eq("trip_id",tripId)
+.eq("place_id",PLACE_ID)
+.eq("user_id",currentUser.id)
+.maybeSingle();
 
-  const { error } = await window.spClient
-    .from("trip_places")
-    .insert({
-      user_id: user.id,
-      trip_id: tripId,
-      place_id: PLACE_ID
-    });
+currentFavorite=data;
 
-  if(error){
-    statusText.innerText = "收藏失敗：" + error.message;
-    return;
-  }
+updateButton();
 
-  statusText.innerText = "收藏成功。";
+}
+
+function updateButton(){
+
+const btn=document.getElementById("favoriteBtn");
+
+if(currentFavorite){
+
+btn.innerHTML="❤️ 已收藏（點一下取消）";
+
+}else{
+
+btn.innerHTML="🤍 收藏到旅行";
+
+}
+
+}
+
+document.getElementById("tripSelect").onchange=checkFavorite;
+
+document.getElementById("favoriteBtn").onclick=async()=>{
+
+const tripId=document.getElementById("tripSelect").value;
+
+if(currentFavorite){
+
+await window.spClient
+.from("trip_places")
+.delete()
+.eq("id",currentFavorite.id);
+
+currentFavorite=null;
+
+document.getElementById("status").innerHTML="已取消收藏";
+
+updateButton();
+
+return;
+
+}
+
+const {data,error}=await window.spClient
+.from("trip_places")
+.insert({
+
+trip_id:tripId,
+user_id:currentUser.id,
+place_id:PLACE_ID
+
+})
+.select()
+.single();
+
+if(error){
+
+document.getElementById("status").innerHTML=error.message;
+
+return;
+
+}
+
+currentFavorite=data;
+
+document.getElementById("status").innerHTML="收藏成功";
+
+updateButton();
+
 };
 
-loadTrips();
+(async()=>{
+
+await getUser();
+
+await loadTrips();
+
+})();
+
 </script>
 
 </body>
