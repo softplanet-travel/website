@@ -28,7 +28,11 @@ body{
   box-shadow:0 2px 12px rgba(0,0,0,.06);
 }
 .brand{display:flex;align-items:center;gap:10px;}
-.brand-bear{font-size:34px;}
+.brand-logo{
+    width:52px;
+    height:52px;
+    object-fit:contain;
+}
 .brand-name{font-size:28px;font-weight:700;color:#2d4b9a;}
 .brand-subtitle{font-size:14px;color:#8c6d4b;}
 .header-actions{display:flex;gap:12px;}
@@ -37,17 +41,28 @@ body{
   background:#f3efe9;cursor:pointer;font-size:20px;
 }
 .hero{
-  margin:18px;
-  border-radius:28px;
-  background:linear-gradient(135deg,#fff7ef,#f7e8d8);
-  min-height:260px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:24px;
+    margin:18px;
+    padding:0;
+    background:none;
+    min-height:auto;
+    display:block;
 }
-.hero h1{font-size:40px;margin-bottom:12px;}
-.hero p{font-size:20px;line-height:1.6;}
+
+.hero-image{
+    width:100%;
+    display:block;
+    border-radius:28px;
+}
+.hero h1{
+    font-size:52px;
+    line-height:1.15;
+    white-space:nowrap;
+    margin-bottom:18px;
+}
+.hero p{
+    font-size:16px;
+    line-height:1.8;
+}
 .hero-bear{font-size:120px;}
 .cta-grid{
   display:grid;
@@ -69,8 +84,14 @@ body{
 .cta-inspiration{background:#FFE8C8;}
 .cta-planner{background:#FFE0D1;}
 .cta-icon{font-size:34px;}
-.cta-card h2{font-size:22px;margin:10px 0;}
-.cta-card p{font-size:14px;line-height:1.5;}
+.cta-card h2{
+    font-size:30px;
+    line-height:1.2;
+}
+.cta-card p{
+    font-size:15px;
+    line-height:1.7;
+}
 .cta-card span{font-weight:700;margin-top:10px;}
 .popular-trips,.feature-hero-row,.my-trip-section,.achievement-section,.member-section{
   padding:0 18px 26px;
@@ -195,4 +216,4 @@ body{
 }
 .bottom-nav span{font-size:22px;margin-bottom:4px;}
 .bottom-nav .active{color:#ef8b56;font-weight:700;}
-
+                                                 

@@ -1,212 +1,245 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SoftPlanet 柔軟星球</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <div class="app">
 
-    <header class="site-header">
-      <div class="brand">
-        <div class="brand-bear">🐻</div>
+<div class="app">
+
+  <!-- Header -->
+ <header class="site-header">
+
+    <div class="brand">
+
+        <img
+            class="brand-logo"
+            src="https://pub-b81dcc9d028843a88c719d03c1eb29a1.r2.dev/assets/logo/softplanet-logo.webp"
+            alt="SoftPlanet">
+
         <div>
-          <div class="brand-name">SoftPlanet</div>
-          <div class="brand-subtitle">柔軟星球</div>
+            <div class="brand-name">SoftPlanet</div>
+            <div class="brand-subtitle">柔軟星球</div>
         </div>
+
+    </div>
+
+    <div class="header-actions">
+
+        <button class="icon-btn" aria-label="分享">
+            ⤴
+        </button>
+
+        <button class="icon-btn" aria-label="選單">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+  <main>
+
+     
+   <section class="hero">
+
+    <img
+        class="hero-image"
+        src="https://pub-b81dcc9d028843a88c719d03c1eb29a1.r2.dev/assets/hero/hero-home.webp"
+        alt="SoftPlanet Hero">
+
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-grid">
+
+      <a class="cta-card cta-inspiration" href="#">
+
+        <div class="cta-icon">💡</div>
+
+        <h2>我要旅行靈感</h2>
+
+       <p>
+  探索景點、美食與住宿。
+</p>
+
+        <span>開始探索 →</span>
+
+      </a>
+
+      <a class="cta-card cta-planner" href="#">
+
+        <div class="cta-icon">🗺️</div>
+
+        <h2>幫我規劃行程</h2>
+
+       <p>
+  快速建立你的專屬行程。
+</p>
+
+        <span>立即規劃 →</span>
+
+      </a>
+
+    </section>
+
+    <!-- 熱門行程 -->
+    <section class="popular-trips">
+
+      <div class="section-head">
+        <h2>🔥 熱門行程</h2>
+        <a href="#">查看更多 ›</a>
       </div>
 
-      <div class="header-actions">
-        <button class="icon-btn" aria-label="分享">⌯</button>
-        <button class="icon-btn" aria-label="選單">☰</button>
+      <div class="trip-scroll">
+
+        <article class="trip-card">
+
+          <div class="trip-image trip-tokyo"></div>
+
+          <div class="trip-content">
+
+            <div class="trip-tag">
+              日本・東京
+            </div>
+
+            <h3>
+              東京5天4夜美食之旅
+            </h3>
+
+            <p>
+              美食與親子一次滿足！
+            </p>
+
+            <button class="heart-btn">
+              ♡
+            </button>
+
+          </div>
+
+        </article>
+
+        <article class="trip-card">
+
+          <div class="trip-image trip-okinawa"></div>
+
+          <div class="trip-content">
+
+            <div class="trip-tag">
+              日本・沖繩
+            </div>
+
+            <h3>
+              沖繩5天4夜自駕遊
+            </h3>
+
+            <p>
+              海島放鬆之旅
+            </p>
+
+            <button class="heart-btn">
+              ♡
+            </button>
+
+          </div>
+
+        </article>
+
+        <article class="trip-card">
+
+          <div class="trip-image trip-seoul"></div>
+
+          <div class="trip-content">
+
+            <div class="trip-tag">
+              韓國・首爾
+            </div>
+
+            <h3>
+              首爾5天4夜自由行
+            </h3>
+
+            <p>
+              購物美食全攻略
+            </p>
+
+            <button class="heart-btn">
+              ♡
+            </button>
+
+          </div>
+
+        </article>
+
+        <article class="trip-card">
+
+          <div class="trip-image trip-hongkong"></div>
+
+          <div class="trip-content">
+
+            <div class="trip-tag">
+              香港
+            </div>
+
+            <h3>
+              香港4天3夜美食購物
+            </h3>
+
+            <p>
+              港式美食不能錯過
+            </p>
+
+            <button class="heart-btn">
+              ♡
+            </button>
+
+          </div>
+
+        </article>
+
       </div>
-    </header>
 
-    <main>
+    </section>
 
-      <section class="hero">
-        <div class="hero-text">
-          <h1>今天想去哪裡？</h1>
-          <p>世界很大，<br>我陪你慢慢看。</p>
-        </div>
-        <div class="hero-bear">🐻</div>
-      </section>
+  </main>
 
-      <section class="cta-grid">
-        <a class="cta-card cta-inspiration" href="#">
-          <div class="cta-icon">💡</div>
-          <h2>我要旅行靈感</h2>
-          <p>找景點、美食、住宿與攻略。</p>
-          <span>開始探索 →</span>
-        </a>
+  <!-- Navigation -->
 
-        <a class="cta-card cta-planner" href="#">
-          <div class="cta-icon">🗺️</div>
-          <h2>幫我規劃行程</h2>
-          <p>回答幾個問題，快速規劃旅程。</p>
-          <span>立即規劃 →</span>
-        </a>
-      </section>
+  <nav class="bottom-nav">
 
-      <section class="popular-trips">
-        <div class="section-head">
-          <h2>🔥 熱門行程</h2>
-          <a href="#">查看更多 ›</a>
-        </div>
+    <a class="active" href="#">
+      <span>🏠</span>
+      首頁
+    </a>
 
-        <div class="trip-scroll">
-          <article class="trip-card">
-            <div class="trip-image trip-tokyo"></div>
-            <div class="trip-content">
-              <div class="trip-tag">日本・東京</div>
-              <h3>東京5天4夜美食之旅</h3>
-              <p>美食與親子一次滿足！</p>
-              <button class="heart-btn">♡</button>
-            </div>
-          </article>
+    <a href="#">
+      <span>🗓️</span>
+      行程規劃
+    </a>
 
-          <article class="trip-card">
-            <div class="trip-image trip-okinawa"></div>
-            <div class="trip-content">
-              <div class="trip-tag">沖繩</div>
-              <h3>沖繩5天4夜自駕遊</h3>
-              <p>海島放鬆之旅</p>
-              <button class="heart-btn">♡</button>
-            </div>
-          </article>
+    <a href="#">
+      <span>💡</span>
+      旅行靈感
+    </a>
 
-          <article class="trip-card">
-            <div class="trip-image trip-seoul"></div>
-            <div class="trip-content">
-              <div class="trip-tag">韓國・首爾</div>
-              <h3>首爾5天4夜自由行</h3>
-              <p>購物美食全攻略</p>
-              <button class="heart-btn">♡</button>
-            </div>
-          </article>
+    <a href="#">
+      <span>🧳</span>
+      行李攻略
+    </a>
 
-          <article class="trip-card">
-            <div class="trip-image trip-hongkong"></div>
-            <div class="trip-content">
-              <div class="trip-tag">香港</div>
-              <h3>香港4天3夜美食購物</h3>
-              <p>港式美食不能錯過</p>
-              <button class="heart-btn">♡</button>
-            </div>
-          </article>
-        </div>
-      </section>
+    <a href="#">
+      <span>👤</span>
+      我的
+    </a>
 
-      <section class="feature-hero-row">
-        <div class="feature-card">
-          <h3>旅行靈感頁</h3>
-          <p>找靈感，讓旅行更美好！</p>
-        </div>
+  </nav>
 
-        <div class="feature-card">
-          <h3>行程規劃器</h3>
-          <p>回答幾個問題，幫你快速規劃行程！</p>
-        </div>
+</div>
 
-        <div class="feature-card">
-          <h3>行李攻略</h3>
-          <p>打包不煩惱，出發更輕鬆！</p>
-        </div>
+<script src="js/script.js"></script>
 
-        <div class="feature-card">
-          <h3>我的</h3>
-          <p>歡迎回來，一起記錄你的旅程！</p>
-        </div>
-      </section>
-
-      <section class="my-trip-section">
-        <h2>我的旅行</h2>
-        <div class="planner-card">
-          <div class="planner-title">
-            <span>東京5天4夜自由行</span>
-            <button>分享</button>
-          </div>
-
-          <div class="day-tabs">
-            <button class="active">Day 1</button>
-            <button>Day 2</button>
-            <button>Day 3</button>
-            <button>Day 4</button>
-            <button>Day 5</button>
-          </div>
-
-          <ul class="trip-list">
-            <li>淺草寺 <span>⋮</span></li>
-            <li>仲見世通 <span>⋮</span></li>
-            <li>藍瓶咖啡 Blue Bottle <span>⋮</span></li>
-            <li>OMO3 淺草 by 星野集團 <span>⋮</span></li>
-          </ul>
-
-          <button class="add-item-btn">＋ 加入項目</button>
-        </div>
-      </section>
-
-      <section class="achievement-section">
-        <h2>成就系統</h2>
-        <div class="badge-grid">
-          <div class="badge-card">🏅<span>東京探索者</span></div>
-          <div class="badge-card">🥈<span>日本成就者</span></div>
-          <div class="badge-card">🥉<span>沖繩探索者</span></div>
-          <div class="badge-card">🏆<span>首爾達人</span></div>
-        </div>
-      </section>
-
-      <section class="member-section">
-        <h2>我的</h2>
-        <div class="member-card">
-          <div class="avatar">🐻</div>
-          <div>
-            <p><strong>Joy</strong></p>
-            <p>joy@example.com</p>
-            <p>0912-345-678</p>
-          </div>
-        </div>
-
-        <div class="member-menu">
-          <a href="#">我的資料</a>
-          <a href="#">我的收藏</a>
-          <a href="#">我的旅行</a>
-          <a href="#">旅行急救包</a>
-          <a href="#">優惠退稅 Line</a>
-          <a href="#">設定</a>
-        </div>
-      </section>
-
-    </main>
-
-    <nav class="bottom-nav">
-      <a class="active" href="#">
-        <span>🏠</span>
-        首頁
-      </a>
-      <a href="#">
-        <span>🗓️</span>
-        行程規劃
-      </a>
-      <a href="#">
-        <span>💡</span>
-        旅行靈感
-      </a>
-      <a href="#">
-        <span>🧳</span>
-        行李攻略
-      </a>
-      <a href="#">
-        <span>👤</span>
-        我的
-      </a>
-    </nav>
-
-  </div>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
