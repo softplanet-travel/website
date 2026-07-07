@@ -28,7 +28,12 @@ body{
   box-shadow:0 2px 12px rgba(0,0,0,.06);
 }
 .brand{
-    height:92px;
+    display:flex;
+    align-items:center;
+}
+
+.site-logo{
+    height:42px;
     width:auto;
     display:block;
 }
