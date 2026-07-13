@@ -2,240 +2,48 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F8F4EE">
   <title>SoftPlanet 柔軟星球</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260713-review2">
 </head>
-
 <body>
-
-<div class="app">
-
-  <!-- Header -->
- <header class="site-header">
-
-   <div class="brand">
-
-    <img
-        class="site-logo"
-        src="https://pub-b81dcc9d028843a88c719d03c1eb29a1.r2.dev/assets/logo/softplanet-logo.webp"
-        alt="SoftPlanet">
-
-</div>
-            
-
-    <div class="header-actions">
-
-        <button class="icon-btn" aria-label="分享">
-            ⤴
-        </button>
-
-        <button class="icon-btn" aria-label="選單">
-            ☰
-        </button>
-
-    </div>
-
-</header>
-  <main>
-
-     
-   <section class="hero">
-
-    <img
-        class="hero-image"
-        src="https://pub-b81dcc9d028843a88c719d03c1eb29a1.r2.dev/assets/hero/hero-home.webp"
-        alt="SoftPlanet Hero">
-
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-grid">
-
-      <a class="cta-card cta-inspiration" href="#">
-
-        <div class="cta-icon">💡</div>
-
-        <h2>我要旅行靈感</h2>
-
-       <p>
-  探索景點、美食與住宿。
-</p>
-
-        <span>開始探索 →</span>
-
-      </a>
-
-      <a class="cta-card cta-planner" href="#">
-
-        <div class="cta-icon">🗺️</div>
-
-        <h2>幫我規劃行程</h2>
-
-       <p>
-  快速建立你的專屬行程。
-</p>
-
-        <span>立即規劃 →</span>
-
-      </a>
-
-    </section>
-
-    <!-- 熱門行程 -->
-    <section class="popular-trips">
-
-      <div class="section-head">
-        <h2>🔥 熱門行程</h2>
-        <a href="#">查看更多 ›</a>
-      </div>
-
-      <div class="trip-scroll">
-
-        <article class="trip-card">
-
-          <div class="trip-image trip-tokyo"></div>
-
-          <div class="trip-content">
-
-            <div class="trip-tag">
-              日本・東京
-            </div>
-
-            <h3>
-              東京5天4夜美食之旅
-            </h3>
-
-            <p>
-              美食與親子一次滿足！
-            </p>
-
-            <button class="heart-btn">
-              ♡
-            </button>
-
-          </div>
-
-        </article>
-
-        <article class="trip-card">
-
-          <div class="trip-image trip-okinawa"></div>
-
-          <div class="trip-content">
-
-            <div class="trip-tag">
-              日本・沖繩
-            </div>
-
-            <h3>
-              沖繩5天4夜自駕遊
-            </h3>
-
-            <p>
-              海島放鬆之旅
-            </p>
-
-            <button class="heart-btn">
-              ♡
-            </button>
-
-          </div>
-
-        </article>
-
-        <article class="trip-card">
-
-          <div class="trip-image trip-seoul"></div>
-
-          <div class="trip-content">
-
-            <div class="trip-tag">
-              韓國・首爾
-            </div>
-
-            <h3>
-              首爾5天4夜自由行
-            </h3>
-
-            <p>
-              購物美食全攻略
-            </p>
-
-            <button class="heart-btn">
-              ♡
-            </button>
-
-          </div>
-
-        </article>
-
-        <article class="trip-card">
-
-          <div class="trip-image trip-hongkong"></div>
-
-          <div class="trip-content">
-
-            <div class="trip-tag">
-              香港
-            </div>
-
-            <h3>
-              香港4天3夜美食購物
-            </h3>
-
-            <p>
-              港式美食不能錯過
-            </p>
-
-            <button class="heart-btn">
-              ♡
-            </button>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- Navigation -->
-
-  <nav class="bottom-nav">
-
-    <a class="active" href="#">
-      <span>🏠</span>
-      首頁
-    </a>
-
-    <a href="#">
-      <span>🗓️</span>
-      行程規劃
-    </a>
-
-    <a href="#">
-      <span>💡</span>
-      旅行靈感
-    </a>
-
-    <a href="#">
-      <span>🧳</span>
-      行李攻略
-    </a>
-
-    <a href="#">
-      <span>👤</span>
-      我的
-    </a>
-
-  </nav>
-
-</div>
-
-<script src="js/script.js"></script>
-
+  <div class="app home-page">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="SoftPlanet 首頁"><img class="site-logo" src="https://pub-b81dcc9d028843a88c719d03c1eb29a1.r2.dev/assets/logo/softplanet-logo.webp" alt="SoftPlanet" width="1774" height="611" decoding="async"></a>
+      <div class="header-actions"><button class="icon-btn" id="shareBtn" type="button" aria-label="分享 SoftPlanet"><span aria-hidden="true">↗</span></button><button class="icon-btn" id="menuBtn" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="siteMenu"><span aria-hidden="true">☰</span></button></div>
+    </header>
+    <div class="site-menu" id="siteMenu" hidden><a href="inspiration.html">旅行靈感</a><a href="trips.html">我的旅行</a><a href="favorites.html">收藏</a><a href="my.html">我的</a></div>
+    <main>
+      <section class="hero" aria-labelledby="homeHeroTitle">
+        <img class="hero-image" src="https://pub-b81dcc9d028843a88c719d03c1eb29a1.r2.dev/assets/hero/hero-home.webp" alt="MUMU 熊抱著旅行地標" width="1535" height="1024" decoding="async" fetchpriority="high">
+        <div class="hero-content">
+          <p class="hero-kicker">SoftPlanet 柔軟星球</p>
+          <h1 id="homeHeroTitle"><span>讓旅行，</span><span>從一點期待慢慢開始。</span></h1>
+          <p class="hero-greeting" id="homeGreeting">旅人，今天想去哪裡走走？</p>
+        </div>
+      </section>
+      <section class="cta-grid" aria-label="開始使用 SoftPlanet">
+        <a class="cta-card cta-inspiration" href="inspiration.html"><div class="cta-icon" aria-hidden="true">💡</div><h2>旅行靈感</h2><p>探索景點、美食與住宿。</p><span>開始探索 →</span></a>
+        <a class="cta-card cta-planner" href="trips.html"><div class="cta-icon" aria-hidden="true">🗺️</div><h2>我的旅行</h2><p>收好喜歡的地方，慢慢排進旅程。</p><span>打開旅行 →</span></a>
+      </section>
+      <section class="popular-trips" aria-labelledby="popularTitle">
+        <div class="section-head"><h2 id="popularTitle">MUMU 的熱門靈感</h2><a href="inspiration.html?country=日本&city=東京&category=景點">查看更多 ›</a></div>
+        <div class="trip-scroll">
+          <article class="trip-card"><a class="trip-image trip-tokyo" href="place.html?id=tokyo-skytree" aria-label="查看東京晴空塔"><span aria-hidden="true">🗼</span></a><div class="trip-content"><div class="trip-tag">日本・東京</div><h3>東京晴空塔</h3><p>從傍晚一路看到東京亮起燈。</p><a class="card-detail-link" href="place.html?id=tokyo-skytree">查看詳情 →</a><button class="heart-btn" type="button" data-place-id="tokyo-skytree" aria-label="收藏東京晴空塔" aria-pressed="false">♡</button></div></article>
+          <article class="trip-card"><a class="trip-image trip-okinawa" href="place.html?id=okinawa-aquarium" aria-label="查看沖繩美麗海水族館"><span aria-hidden="true">🐋</span></a><div class="trip-content"><div class="trip-tag">日本・沖繩</div><h3>沖繩美麗海水族館</h3><p>和鯨鯊一起度過療癒午後。</p><a class="card-detail-link" href="place.html?id=okinawa-aquarium">查看詳情 →</a><button class="heart-btn" type="button" data-place-id="okinawa-aquarium" aria-label="收藏沖繩美麗海水族館" aria-pressed="false">♡</button></div></article>
+          <article class="trip-card"><a class="trip-image trip-seoul" href="place.html?id=seoul-forest" aria-label="查看首爾林"><span aria-hidden="true">🌳</span></a><div class="trip-content"><div class="trip-tag">韓國・首爾</div><h3>首爾林散步</h3><p>在城市裡留一段綠色空白。</p><a class="card-detail-link" href="place.html?id=seoul-forest">查看詳情 →</a><button class="heart-btn" type="button" data-place-id="seoul-forest" aria-label="收藏首爾林" aria-pressed="false">♡</button></div></article>
+          <article class="trip-card"><a class="trip-image trip-hongkong" href="place.html?id=hongkong-tram" aria-label="查看叮叮車城市散策"><span aria-hidden="true">🚋</span></a><div class="trip-content"><div class="trip-tag">香港</div><h3>叮叮車城市散策</h3><p>用柔軟的速度看港島街景。</p><a class="card-detail-link" href="place.html?id=hongkong-tram">查看詳情 →</a><button class="heart-btn" type="button" data-place-id="hongkong-tram" aria-label="收藏叮叮車城市散策" aria-pressed="false">♡</button></div></article>
+        </div>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="主要導覽"><a href="flight.html"><span aria-hidden="true">✈️</span>機票攻略</a><a href="inspiration.html"><span aria-hidden="true">💡</span>旅行靈感</a><a href="trips.html"><span aria-hidden="true">🗺️</span>我的旅行</a><a href="packing.html"><span aria-hidden="true">🧳</span>行李攻略</a><a href="my.html"><span aria-hidden="true">👤</span>我的</a></nav>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/profile-service.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

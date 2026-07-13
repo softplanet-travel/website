@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="theme-color" content="#F8F4EE"><title>查看詳情 - SoftPlanet</title><link rel="stylesheet" href="css/style.css?v=20260713-review2"></head>
+<body>
+  <div class="app place-detail-page">
+    <header class="site-header simple-header"><a class="back-link" id="detailBack" href="inspiration.html" aria-label="返回旅行靈感">‹</a><a class="page-brand" href="index.html"><span class="mumu-asset mumu-asset-small" data-mumu aria-hidden="true"></span><strong>旅行靈感</strong></a><div class="detail-header-actions"><button class="place-heart" id="favoriteBtn" type="button" aria-label="收藏" aria-pressed="false">♡</button><button class="place-share" id="placeShareBtn" type="button" aria-label="分享內容">↗</button></div></header>
+    <main id="placeContent">
+      <section class="place-detail-hero" id="placeVisual" aria-hidden="true"><span id="placeEmoji"></span><small class="demo-badge" id="demoBadge" hidden>Demo</small></section>
+      <section class="place-detail-content">
+        <p class="eyebrow" id="placeMeta"></p><h1 id="placeName">正在準備內容</h1><p class="place-summary" id="placeSummary"></p>
+        <div class="quick-facts"><div><span aria-hidden="true">⏱️</span><small>建議停留</small><strong id="placeDuration">—</strong></div><div><span aria-hidden="true">☀️</span><small>適合時段</small><strong id="placeBestTime">—</strong></div></div>
+        <article class="detail-card"><h2>📍 位置</h2><p id="placeAddress"></p><div class="detail-actions"><a class="secondary-link" id="mapView" target="_blank" rel="noopener noreferrer">查看地圖</a></div></article>
+        <article class="detail-card" id="hotelDetails" hidden><h2>住起來的感覺</h2><dl class="detail-list"><div><dt>適合誰</dt><dd id="placeSuitable"></dd></div><div><dt>交通</dt><dd id="placeTransport"></dd></div><div><dt>周邊</dt><dd id="placeSurroundings"></dd></div><div><dt>設施</dt><dd id="placeFacilities"></dd></div></dl><p class="demo-note">房價與空房請以訂房平台為準。</p><div class="external-grid" id="bookingLinks" hidden></div></article>
+        <article class="detail-card mumu-tip"><h2><span class="mumu-asset mumu-asset-inline" data-mumu aria-hidden="true"></span>MUMU 小提醒</h2><p id="placeTip"></p></article>
+        <article class="detail-card user-note-card" id="userNoteCard" hidden><h2>📌 你留下的提醒</h2><p id="userNote"></p></article>
+        <article class="detail-card" id="referenceCard" hidden><h2>參考連結</h2><p>這些連結由你加入，開啟前可再次確認內容與來源。</p><div class="reference-list" id="referenceList"></div></article>
+        <article class="upgrade-card" id="upgradeCard" hidden><span class="mumu-asset" data-mumu aria-hidden="true"></span><div><h2>MUMU 發現這個地點現在已有完整資訊囉！</h2><p>升級後會補上官方地址、交通與地圖資料，原本的簡短描述與旅行安排都會保留。</p><div class="upgrade-actions"><button class="primary-btn" id="acceptUpgrade" type="button">升級為官方卡</button><button class="secondary-btn" id="dismissUpgrade" type="button">暫時保留原卡</button></div></div></article>
+        <article class="detail-card" id="ticketPanel" hidden><h2>🎟️ 票券資訊</h2><p>出發前請再次確認日期、退改規則與最終價格。</p><div class="external-grid" id="ticketLinks"></div></article>
+        <section class="add-trip-panel" aria-labelledby="addTripTitle"><h2 id="addTripTitle">加入我的旅行</h2><p>選一趟旅行，把這個地方先收進去。</p><div id="tripPicker"><div class="soft-loading compact-empty"><span class="mumu-asset" data-mumu aria-hidden="true"></span><p>正在看看你的旅行清單…</p></div></div><p class="status-message" id="status" role="status" aria-live="polite"></p></section>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="主要導覽"><a href="flight.html"><span aria-hidden="true">✈️</span>機票攻略</a><a class="active" href="inspiration.html"><span aria-hidden="true">💡</span>旅行靈感</a><a href="trips.html"><span aria-hidden="true">🗺️</span>我的旅行</a><a href="packing.html"><span aria-hidden="true">🧳</span>行李攻略</a><a href="my.html"><span aria-hidden="true">👤</span>我的</a></nav>
+  </div>
+  <dialog class="login-sheet" id="loginSheet"><form method="dialog"><button class="sheet-close" value="cancel" aria-label="關閉">×</button><div class="dialog-bear mumu-asset" data-mumu aria-hidden="true"></div><h2>先把旅行帶在身邊</h2><p>登入後，MUMU 可以幫你把旅行、預算與記帳安心保存；也可以先用訪客模式試用。</p><button class="primary-btn" id="googleLogin" value="google">使用 Google 登入</button><button class="secondary-btn" id="guestLogin" value="guest">以訪客模式試用</button><p class="status-message" id="loginStatus"></p></form></dialog>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/supabase-client.js"></script><script src="js/travel-store.js"></script><script src="js/map-link-resolver.js"></script><script src="js/places-data.js"></script><script src="js/custom-item-service.js"></script><script src="js/card-actions.js"></script><script src="js/place-detail.js?v=20260713-bible"></script><script src="js/script.js"></script>
+</body></html>

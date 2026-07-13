@@ -1,0 +1,2 @@
+create table if not exists public.guides (guide_id text primary key, guide_type text not null, destination_id text, hub_id text references public.transportation_hubs(hub_id), title text not null, summary text, updated_at timestamptz not null default now());
+create table if not exists public.reminder_rules (rule_id text primary key, conditions jsonb not null, message text not null, guide_id text references public.guides(guide_id), priority integer not null default 0, status text not null default 'active');

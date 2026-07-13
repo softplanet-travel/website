@@ -1,81 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我的收藏</title>
-
-<style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#faf8f4;
-}
-
-header{
-    background:#fff;
-    padding:20px;
-    text-align:center;
-    font-size:28px;
-    font-weight:bold;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-.container{
-    max-width:1000px;
-    margin:40px auto;
-    padding:20px;
-}
-
-.card{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
-
-.empty{
-    text-align:center;
-    color:#777;
-    padding:60px 20px;
-}
-
-button{
-    background:#4db6ac;
-    color:white;
-    border:none;
-    padding:12px 24px;
-    border-radius:8px;
-    cursor:pointer;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F8F4EE">
+  <title>收藏 - SoftPlanet</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+  <div class="app favorites-page">
+    <header class="site-header simple-header">
+      <a class="back-link" href="my.html" aria-label="返回我的">‹</a>
+      <a class="page-brand" href="index.html"><span>♡</span><strong>收藏</strong></a>
+      <a class="text-header-action" href="inspiration.html">找靈感</a>
+    </header>
 
-<header>
-❤️ 我的收藏
-</header>
+    <main>
+      <section class="page-intro compact-intro">
+        <p class="eyebrow">MUMU 幫你記住心動的地方</p>
+        <h1>喜歡的，都先放在這裡</h1>
+        <p>收藏讓你心動的景點、美食、住宿與伴手禮，也能新增自己的私房口袋名單。</p><p>建立專屬旅行靈感庫，隨時加入下一趟旅行。</p>
+      </section>
 
-<div class="container">
+      <section class="favorite-list-section">
+        <div id="favoriteSearch"></div>
+        <div class="filter-scroll favorite-filters" id="favoriteFilters">
+          <button class="filter-chip active" data-filter="全部" aria-pressed="true">全部</button>
+          <button class="filter-chip" data-filter="景點" aria-pressed="false">景點</button>
+          <button class="filter-chip" data-filter="美食" aria-pressed="false">美食</button>
+          <button class="filter-chip" data-filter="住宿" aria-pressed="false">住宿</button>
+        </div>
+        <div class="section-head">
+          <h2>收藏內容</h2>
+          <span class="count-badge" id="favoriteCount"></span>
+        </div>
+        <div class="place-grid favorite-grid" id="favoriteList" aria-live="polite"></div>
+      </section>
+    </main>
 
-<div class="card">
+    <nav class="bottom-nav" aria-label="主要導覽">
+      <a href="flight.html"><span>✈️</span>機票攻略</a>
+      <a href="inspiration.html"><span>💡</span>旅行靈感</a>
+      <a href="trips.html"><span>🗺️</span>我的旅行</a>
+      <a href="packing.html"><span>🧳</span>行李攻略</a>
+      <a class="active" href="my.html"><span>👤</span>我的</a>
+    </nav>
+  </div>
 
-<h2>收藏景點</h2>
-
-<div class="empty">
-目前還沒有收藏任何景點。
-<br><br>
-
-<button onclick="location.href='index.html'">
-開始探索
-</button>
-
-</div>
-
-</div>
-
-</div>
-
+  <script src="js/search-component.js"></script>
+  <script src="js/places-data.js"></script>
+  <script src="js/card-actions.js"></script>
+  <script src="js/favorites.js?v=20260713-bible"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
