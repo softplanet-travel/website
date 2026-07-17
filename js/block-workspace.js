@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const mumu = '<span class="mumu-asset" data-mumu aria-hidden="true"></span>';
 
   if (!tripId || !meta) {
-    workspace.innerHTML = `<div class="soft-empty">${mumu}<h3>找不到這個旅行積木</h3><a class="primary-link" href="trips.html">返回我的旅行 →</a></div>`;
+    workspace.innerHTML = `<div class="soft-empty">${mumu}<h3>找不到這個旅行工具</h3><a class="primary-link" href="trips.html">返回我的旅行 →</a></div>`;
     return;
   }
   const trip = await window.SoftPlanetStore.getTrip(tripId);
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function renderBudgetSummary(metrics, compact = false) {
     if (!metrics.budget) {
-      return `<section class="budget-empty-card">${mumu}<div><strong>還沒有設定總預算</strong><p>記帳可以先開始，需要時再設定旅行預算。</p><a href="block.html?trip=${encodeURIComponent(tripId)}&type=budget">設定旅行預算 →</a></div></section>`;
+      return `<section class="budget-empty-card">${mumu}<div><strong>還沒有設定總預算</strong><p>記帳可以先開始，需要時在下方「設定旅行預算」設定即可。</p></div></section>`;
     }
     const note = reminder(metrics.estimatedPercent);
     const categoryTotals = {};
@@ -119,7 +119,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         </form>
       </section>
       ${renderWallets()}
+      <section class="workspace-card" id="budgetInlineSection"><h2>${metrics.budget ? "調整旅行預算" : "設定旅行預算"}</h2>${budgetFormHtml(metrics)}</section>
       <section class="workspace-card"><div class="section-head"><h2>支出明細</h2></div><div id="expenseSearch"></div><div id="expenseList"></div></section>`;
+    bindBudgetForm($("budgetInlineSection"), renderExpenses);
 
     const amount = $("expenseAmount");
     const currency = $("expenseCurrency");
@@ -129,8 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const updateSourceVisibility = () => { sourceField.hidden = !sourceMethods.has($("paymentMethod").value); };
     const preview = () => {
       const converted = services.convert(amount.value, currency.value, metrics.currency);
-      const rate = services.rateData();
-      $("expensePreview").textContent = converted ? `${amount.value || 0} ${currency.value}・約 ${money(converted.amount, metrics.currency)}（匯率資料 ${rate.rate_date}，不含銀行手續費與回饋）` : "暫時沒有這組匯率，仍可保存原幣支出。";
+      $("expensePreview").textContent = converted ? `${amount.value || 0} ${currency.value}・約 ${money(converted.amount, metrics.currency)}${converted.rate_date ? `（匯率資料 ${converted.rate_date}，不含銀行手續費與回饋）` : "（幣別相同）"}` : "目前無法更新匯率資料，仍可保存原幣支出。";
     };
     amount.oninput = preview;
     currency.onchange = preview;
@@ -211,26 +212,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     host.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  function renderBudget() {
-    const metrics = budgetMetrics();
-    const budget = metrics.budget;
-    const categoryBudgets = budget?.category_budgets || {};
-    workspace.innerHTML = `${renderBudgetSummary(metrics)}<section class="workspace-card"><h2>${budget ? "調整旅行預算" : "設定旅行預算"}</h2><form id="budgetForm" class="workspace-form"><label>旅行總預算<input name="total_budget" type="number" min="0" step="1" required value="${metrics.total || ""}" placeholder="例如：50000"></label><label>預算主要幣別<select name="currency">${currencies.map((item) => `<option ${item === metrics.currency ? "selected" : ""}>${item}</option>`).join("")}</select></label><details class="category-budget-fields"><summary>設定分類預算（選填）</summary><div class="form-row">${categories.map((category) => `<label>${category}<input name="category_${category}" type="number" min="0" step="1" value="${categoryBudgets[category] || ""}" placeholder="不設定"></label>`).join("")}</div></details><button class="primary-btn" type="submit">保存預算</button><p class="service-note">預算提醒同時考慮已支付與預排支出，只提供旅行安排參考，不是金融建議。</p></form></section>`;
-    $("budgetForm").onsubmit = (event) => {
+  function budgetFormHtml(metrics) {
+    const categoryBudgets = metrics.budget?.category_budgets || {};
+    return `<form id="budgetForm" class="workspace-form"><label>旅行總預算<input name="total_budget" type="number" min="0" step="1" required value="${metrics.total || ""}" placeholder="例如：50000"></label><label>預算主要幣別<select name="currency">${currencies.map((item) => `<option ${item === metrics.currency ? "selected" : ""}>${item}</option>`).join("")}</select></label><details class="category-budget-fields"><summary>設定分類預算（選填）</summary><div class="form-row">${categories.map((category) => `<label>${category}<input name="category_${category}" type="number" min="0" step="1" value="${categoryBudgets[category] || ""}" placeholder="不設定"></label>`).join("")}</div></details><button class="primary-btn" type="submit">保存預算</button><p class="service-note">預算提醒同時考慮已支付與預排支出，只提供旅行安排參考，不是金融建議。</p></form>`;
+  }
+  function bindBudgetForm(root, onSaved) {
+    root.querySelector("#budgetForm").onsubmit = (event) => {
       event.preventDefault();
       const values = Object.fromEntries(new FormData(event.currentTarget));
       const categoryValues = {};
       categories.forEach((category) => { if (values[`category_${category}`]) categoryValues[category] = Number(values[`category_${category}`]); });
       services.saveBudget(tripId, { total_budget: values.total_budget, currency: values.currency, category_budgets: categoryValues });
-      renderBudget();
+      onSaved();
     };
+  }
+  function renderBudget() {
+    const metrics = budgetMetrics();
+    workspace.innerHTML = `${renderBudgetSummary(metrics)}<section class="workspace-card"><h2>${metrics.budget ? "調整旅行預算" : "設定旅行預算"}</h2>${budgetFormHtml(metrics)}</section>`;
+    bindBudgetForm(workspace, renderBudget);
   }
 
   function renderCurrency() {
     const rate = services.rateData();
-    workspace.innerHTML = `<section class="workspace-card"><h2>簡單換算</h2><p class="service-note">換算金額僅供旅行預算估算，實際請以銀行、信用卡或支付工具帳單為準。最後更新：${rate.rate_date}</p><form class="workspace-form" id="currencyForm"><label>金額<input name="amount" type="number" min="0" step="0.01" value="1200"></label><div class="form-row"><label>來源幣別<select name="from">${currencies.map((item) => `<option ${item === "JPY" ? "selected" : ""}>${item}</option>`).join("")}</select></label><label>目標幣別<select name="to">${currencies.map((item) => `<option ${item === "TWD" ? "selected" : ""}>${item}</option>`).join("")}</select></label></div><div class="currency-result" id="currencyResult"></div></form></section>`;
+    workspace.innerHTML = `<section class="workspace-card"><h2>簡單換算</h2><p class="service-note">換算金額僅供旅行預算估算，實際請以銀行、信用卡或支付工具帳單為準。${rate ? `最後更新：${rate.rate_date}` : "目前無法更新匯率資料。"}</p><form class="workspace-form" id="currencyForm"><label>金額<input name="amount" type="number" min="0" step="0.01" value="1200"></label><div class="form-row"><label>來源幣別<select name="from">${currencies.map((item) => `<option ${item === "JPY" ? "selected" : ""}>${item}</option>`).join("")}</select></label><label>目標幣別<select name="to">${currencies.map((item) => `<option ${item === "TWD" ? "selected" : ""}>${item}</option>`).join("")}</select></label></div><div class="currency-result" id="currencyResult"></div></form></section>`;
     const form = $("currencyForm");
-    const update = () => { const values = Object.fromEntries(new FormData(form)); const result = services.convert(values.amount, values.from, values.to); $("currencyResult").innerHTML = result ? `<small>${values.amount} ${values.from}</small><strong>約 ${money(result.amount, values.to)}</strong><p>資料日期 ${result.rate_date}</p>` : "<p>暫時沒有這組匯率資料。</p>"; };
+    const update = () => { const values = Object.fromEntries(new FormData(form)); const result = services.convert(values.amount, values.from, values.to); $("currencyResult").innerHTML = result ? `<small>${values.amount} ${values.from}</small><strong>約 ${money(result.amount, values.to)}</strong><p>資料日期 ${result.rate_date}</p>` : "<p>目前無法更新匯率資料。</p>"; };
     form.oninput = update;
     form.onchange = update;
     update();
