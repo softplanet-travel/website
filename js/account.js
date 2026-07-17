@@ -10,9 +10,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   let user = await window.SoftPlanetProfile.getUser();
   let signedIn = Boolean(user);
   let profile = await window.SoftPlanetProfile.load(user);
-  const authResult = window.SoftPlanetStore?.consumeAuthError();
-
-  const SYNC_COPY = "登入後，你的旅行就能陪你到不同的裝置裡。";
 
   function renderAccount() {
     action.hidden = false;
@@ -22,16 +19,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       title.textContent = profile.preferred_name
         ? `${profile.resolved_name}，歡迎回來`
         : "想讓 MUMU 怎麼稱呼你呢？";
-      subtitle.textContent = "你的旅行已經同步好了，換手機也不怕遺失。";
+      subtitle.textContent = "登入後即可同步你的旅行、收藏與攻略，換手機也不怕遺失。";
       action.textContent = "登出 SoftPlanet";
       action.classList.add("secondary-account-action");
     } else if (window.SoftPlanetStore?.isGuest()) {
       title.textContent = "每一趟旅行，都值得好好保存。";
-      subtitle.textContent = SYNC_COPY;
+      subtitle.textContent = "登入後即可同步你的旅行、收藏與攻略，換手機也不怕遺失。";
       action.textContent = "立即登入同步";
     } else {
       title.textContent = profile.preferred_name ? `${profile.resolved_name}，每一趟旅行都值得好好保存。` : "每一趟旅行，都值得好好保存。";
-      subtitle.textContent = SYNC_COPY;
+      subtitle.textContent = "登入後即可同步你的旅行、收藏與攻略，換手機也不怕遺失。";
       action.textContent = "立即登入同步";
     }
   }
@@ -69,32 +66,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.location.reload();
       return;
     }
-    // signInWithOAuth normally navigates the whole page away immediately. If we're still
-    // here after a few seconds, the redirect never happened (e.g. blocked navigation) -
-    // don't leave the button stuck in a disabled "loading" state forever.
-    const stuckTimer = setTimeout(() => {
-      action.disabled = false;
-      status.textContent = "登入好像卡住了，可以再試一次。";
-    }, 8000);
-    try {
-      await window.SoftPlanetStore.googleSignIn("my.html");
-    } catch (error) {
-      clearTimeout(stuckTimer);
+    const returnTo = sessionStorage.getItem("softplanet-return-to") || "my.html";
+    const { error } = await window.spClient.auth.signInWithOAuth({ provider: "google", options: { redirectTo: new URL(returnTo, window.location.href).href } });
+    if (error) {
       action.disabled = false;
       status.textContent = "暫時無法登入，請稍後再試。";
     }
   });
 
-  if (authResult) {
-    status.textContent = authResult.cancelled ? "登入已取消，要再試一次嗎？" : "暫時無法完成登入，請再試一次。";
-  }
-
   renderAccount();
-
-  // My Space modules default to collapsed and only one may be open at a time; nothing here
-  // persists across page loads, so re-entering My Space always starts fully collapsed.
-  const accordion = window.SoftPlanetAccordion.createGroup();
-  document.querySelectorAll(".my-accordion-item").forEach((item, index) => {
-    accordion.register(`my-space-${index}`, item.querySelector(".my-accordion-header"), item.querySelector(".my-accordion-panel"));
-  });
 });

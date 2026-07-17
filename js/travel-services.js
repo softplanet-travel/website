@@ -7,8 +7,7 @@
     rates: "softplanet-exchange-rates",
     weather: "softplanet-weather-cache",
     paymentSources: "softplanet-payment-sources",
-    walletTransactions: "softplanet-wallet-transactions",
-    tripContext: "softplanet-trip-context"
+    walletTransactions: "softplanet-wallet-transactions"
   };
 
   const parse = (key, fallback) => {
@@ -24,37 +23,12 @@
   const id = (prefix) => `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 
   const blockCatalog = [
-    { id: "packing", name: "行李清單", icon: "🧳", note: "收好這趟真的需要的東西", tripTool: false },
-    { id: "shopping", name: "必買清單", icon: "🎁", note: "記下想帶回家的小東西", tripTool: false },
-    { id: "expenses", name: "旅行花費", icon: "🧾", note: "記帳、支付來源、預算與花費分析" },
-    { id: "budget", name: "旅行預算", icon: "🌿", note: "一起看看還能怎麼安排" },
-    { id: "currency", name: "換匯計算", icon: "💱", note: "快速估算兩種幣別金額" }
+    { id: "packing", name: "行李清單", icon: "🧳", note: "收好這趟真的需要的東西" },
+    { id: "shopping", name: "必買清單", icon: "🎁", note: "記下想帶回家的小東西" },
+    { id: "expenses", name: "旅行記帳", icon: "🧾", note: "記錄已支付與預排支出" },
+    { id: "budget", name: "預算控管", icon: "🌿", note: "一起看看還能怎麼安排" },
+    { id: "currency", name: "匯率換算", icon: "💱", note: "快速估算兩種幣別金額" }
   ];
-
-  const toolCatalog = [
-    { id: "weather", type: "weather", name: "當地天氣", icon: "🌤️", note: "這幾天的天氣提醒", defaultTool: true },
-    { id: "expenses", type: "expenses", name: "旅行花費", icon: "🧾", note: "記帳、支付來源、預算與花費分析", defaultTool: true },
-    { id: "worldtime", type: "worldtime", name: "世界時間", icon: "🕰️", note: "你和目的地的時差", defaultTool: false },
-    { id: "unit", type: "unit", name: "單位換算", icon: "📐", note: "公斤／磅、公里／英里等常用換算", defaultTool: false },
-    { id: "currency", type: "currency", name: "換匯計算", icon: "💱", note: "快速估算兩種幣別金額", defaultTool: false }
-  ];
-
-  const unitCategories = [
-    { id: "weight", name: "公斤／磅", units: [["kg", "公斤"], ["lb", "磅"]] },
-    { id: "distance", name: "公里／英里", units: [["km", "公里"], ["mi", "英里"]] },
-    { id: "length", name: "公分／英吋", units: [["cm", "公分"], ["in", "英吋"]] },
-    { id: "temperature", name: "攝氏／華氏", units: [["c", "攝氏"], ["f", "華氏"]] }
-  ];
-  function convertUnit(categoryId, value, fromUnit, toUnit) {
-    const n = Number(value);
-    if (!Number.isFinite(n)) return null;
-    if (fromUnit === toUnit) return n;
-    if (categoryId === "weight") return fromUnit === "kg" ? n * 2.2046226218 : n / 2.2046226218;
-    if (categoryId === "distance") return fromUnit === "km" ? n * 0.6213711922 : n / 0.6213711922;
-    if (categoryId === "length") return fromUnit === "cm" ? n * 0.3937007874 : n / 0.3937007874;
-    if (categoryId === "temperature") return fromUnit === "c" ? n * 9 / 5 + 32 : (n - 32) * 5 / 9;
-    return null;
-  }
 
   const paymentMethods = [
     ["cash", "現金"],
@@ -302,13 +276,6 @@
   }
 
   const timeZones = { 東京: "Asia/Tokyo", 沖繩: "Asia/Tokyo", 北海道: "Asia/Tokyo", 首爾: "Asia/Seoul", 釜山: "Asia/Seoul", 濟州: "Asia/Seoul", 曼谷: "Asia/Bangkok", 新加坡: "Asia/Singapore", 香港島: "Asia/Hong_Kong" };
-
-  // Standard ISO currency codes, not trip data - same kind of fixed reference fact as timeZones
-  // above. The actual exchange rate still only ever comes from a trusted primeRates() cache.
-  const CURRENCY_BY_COUNTRY = { 日本: "JPY", 韓國: "KRW", 香港: "HKD", 澳門: "MOP", 新加坡: "SGD", 泰國: "THB", 越南: "VND", 馬來西亞: "MYR" };
-  function currencyForCountry(country) {
-    return CURRENCY_BY_COUNTRY[country] || null;
-  }
   function worldTime(city) {
     const zone = timeZones[city];
     if (!zone) return null;
@@ -325,80 +292,42 @@
     return { city, zone, destination, local, difference: difference === 0 ? "沒有時差" : `${difference > 0 ? "快" : "慢"} ${Math.abs(difference)} 小時` };
   }
 
-  // Rates only ever come from a trusted cache written by primeRates(); this module
-  // never fabricates exchange numbers. No trusted cache yet means rateData() is null.
+  const mockRates = { TWD: 1, JPY: 0.21, KRW: 0.024, USD: 32.5, EUR: 35.2, HKD: 4.16, THB: 0.91, SGD: 24.2 };
   function rateData() {
+    const today = new Date().toISOString().slice(0, 10);
     const cached = parse(KEYS.rates, null);
-    return cached && cached.trusted && cached.rates ? cached : null;
-  }
-  function primeRates(payload) {
-    const data = { base_currency: payload.base_currency, rates: payload.rates, rate_date: payload.rate_date, updated_at: now(), source: payload.source, trusted: true };
+    if (cached?.rate_date === today) return cached;
+    const data = { base_currency: "TWD", rates: mockRates, rate_date: today, updated_at: now(), source: "SoftPlanet MVP daily cache (mock)" };
     write(KEYS.rates, data);
     return data;
   }
   function convert(amount, from, to) {
-    if (from === to) return { amount: Number(amount) || 0, rate: 1, rate_date: null, source: "same-currency" };
     const data = rateData();
-    if (!data) return null;
     const fromRate = data.rates[from];
     const toRate = data.rates[to];
     if (!fromRate || !toRate) return null;
     return { amount: Number(amount) * fromRate / toRate, rate: fromRate / toRate, rate_date: data.rate_date, source: data.source };
   }
 
-  // Weather works the same way: only a trusted cache (via primeWeather()) is shown.
-  // No trusted cache means weather(city) is null and the UI must say so plainly.
+  const weatherMock = { 東京: { status: "晴時多雲", high: 30, low: 24, rain: "午後短暫雨機率低" }, 首爾: { status: "多雲", high: 29, low: 23, rain: "外出可帶輕便雨具" }, 曼谷: { status: "局部陣雨", high: 33, low: 27, rain: "午後留意短暫陣雨" }, 新加坡: { status: "多雲短暫雨", high: 31, low: 26, rain: "建議隨身帶傘" } };
   function weather(city) {
+    const mock = weatherMock[city];
+    if (!mock) return null;
     const cache = parse(KEYS.weather, {});
     const cached = cache[city];
-    return cached && cached.trusted ? cached : null;
-  }
-  function primeWeather(city, payload) {
-    const cache = parse(KEYS.weather, {});
-    const value = { city, date: payload.date, status: payload.status, high: payload.high, low: payload.low, rain: payload.rain, updated_at: now(), source: payload.source, trusted: true };
+    if (cached && Date.now() - new Date(cached.updated_at).getTime() < 3600000) return cached;
+    const value = { city, date: new Date().toISOString().slice(0, 10), ...mock, updated_at: now(), source: "SoftPlanet MVP hourly cache (mock)" };
     cache[city] = value;
     write(KEYS.weather, cache);
     return value;
   }
 
-  // Season Advisory lookup table. Sprint A ships the reading interface only — no real
-  // destination/month advisory content exists anywhere in this project yet, so this stays
-  // empty until a real dataset is imported. Never invent advisory content here.
-  const seasonAdvisoryData = {};
-  // destination_id is derived from country+city rather than stored as a separate value: the
-  // project has no dedicated destination master table, but window.SoftPlanetCatalog (already
-  // used by inspiration.html to browse real countries/cities) is the one real list of
-  // recognized destinations. A pair not in that catalog (e.g. a pre-existing free-text legacy
-  // trip) yields null rather than a fabricated id - callers must degrade honestly.
-  function destinationIdFor(country, city) {
-    const catalog = window.SoftPlanetCatalog;
-    if (catalog && !(catalog.cities[country] || []).includes(city)) return null;
-    const raw = `${country || ""}-${city || ""}`.trim();
-    return raw && raw !== "-" ? raw : null;
-  }
-  function seasonAdvisory(destinationId, month) {
-    if (!destinationId) return null;
-    return seasonAdvisoryData[destinationId]?.[month] || null;
-  }
-
-  function tripContext(tripId) {
-    return parse(KEYS.tripContext, {})[tripId] || null;
-  }
-  function saveTripContext(tripId, context) {
-    const all = parse(KEYS.tripContext, {});
-    all[tripId] = { destination_id: context.destination_id || null, travel_month: context.travel_month ?? null, season_type: context.season_type || null, advisory_id: context.advisory_id || null, saved_at: now() };
-    write(KEYS.tripContext, all);
-    return all[tripId];
-  }
-
   window.SoftPlanetServices = {
-    blockCatalog, toolCatalog, unitCategories, convertUnit,
-    paymentMethods, walletTypes, walletMethodsForDestination,
+    blockCatalog, paymentMethods, walletTypes, walletMethodsForDestination,
     blocksForTrip, setBlock, deleteBlock,
     expensesForTrip, addExpense, updateExpense, expenseSummary,
     budgetForTrip, saveBudget,
     paymentSourcesForTrip, createPaymentSource, walletTransactions, walletSnapshot, addWalletTransaction,
-    checklist, saveChecklist, areas, worldTime, rateData, primeRates, convert, weather, primeWeather,
-    destinationIdFor, seasonAdvisory, tripContext, saveTripContext, currencyForCountry
+    checklist, saveChecklist, areas, worldTime, rateData, convert, weather
   };
 }());

@@ -1,11 +1,24 @@
-// countries/cities are populated from data/catalog/*.csv (synced from the project's Google Sheet -
-// see js/catalog-service.js) once its ready() promise resolves. Nothing here hardcodes a
-// country/city list anymore; every consumer must `await window.SoftPlanetCatalogService.ready()`
-// before its first synchronous read of .countries/.cities. `categories` is UI navigation structure
-// (inspiration.html's fixed section menu), not Sheet-managed content, so it stays as-is here.
 window.SoftPlanetCatalog = {
-  countries: [],
-  cities: {},
+  countries: [
+    { name: "日本", emoji: "🇯🇵", note: "城市散步、親子與四季風景" },
+    { name: "韓國", emoji: "🇰🇷", note: "咖啡、美食與自在逛街" },
+    { name: "香港", emoji: "🇭🇰", note: "城市節奏與港式味道" },
+    { name: "澳門", emoji: "🇲🇴", note: "老城散步與葡式風景" },
+    { name: "新加坡", emoji: "🇸🇬", note: "輕鬆移動的親子城市" },
+    { name: "泰國", emoji: "🇹🇭", note: "市集、寺院與慢日子" },
+    { name: "越南", emoji: "🇻🇳", note: "街角咖啡與在地日常" },
+    { name: "馬來西亞", emoji: "🇲🇾", note: "多元文化與南洋味道" }
+  ],
+  cities: {
+    "日本": ["東京", "沖繩", "北海道", "九州", "東京近郊"],
+    "韓國": ["首爾", "釜山", "濟州"],
+    "香港": ["香港島", "九龍"],
+    "澳門": ["澳門半島"],
+    "新加坡": ["新加坡"],
+    "泰國": ["曼谷", "清邁"],
+    "越南": ["峴港", "胡志明市"],
+    "馬來西亞": ["吉隆坡", "檳城"]
+  },
   categories: [
     { name: "城市介紹", icon: "🧭", note: "先認識這座城市" },
     { name: "景點", icon: "📍", note: "值得停下來的地方" },
@@ -15,12 +28,6 @@ window.SoftPlanetCatalog = {
     { name: "熱門行程", icon: "🗓️", note: "輕鬆安排一日散步" }
   ]
 };
-window.SoftPlanetCatalogService.ready().then(() => {
-  window.SoftPlanetCatalog.countries = window.SoftPlanetCatalogService.countries();
-  const cities = {};
-  window.SoftPlanetCatalog.countries.forEach((c) => { cities[c.name] = window.SoftPlanetCatalogService.citiesFor(c.name); });
-  window.SoftPlanetCatalog.cities = cities;
-});
 
 window.SoftPlanetPlaces = [
   {id:"tokyo-skytree",city:"東京",country:"日本",category:"景點",emoji:"🗼",tone:"peach",name:"東京晴空塔",summary:"從城市最高處慢慢看東京，很適合安排在傍晚到夜晚。",duration:"約 2–3 小時",bestTime:"傍晚",address:"東京都墨田區押上 1-1-2",tip:"熱門時段容易客滿，建議先預約；帶小朋友可預留更多休息時間。",map_provider:"google",map_url:"https://www.google.com/maps/search/?api=1&query=Tokyo+Skytree",google_map_url:"https://www.google.com/maps/search/?api=1&query=Tokyo+Skytree"},
