@@ -1,0 +1,7 @@
+{
+  "_comment": "Paste each tab's Google Sheets 'Publish to web' CSV export URL here (File > Share > Publish to web > select the tab > CSV). Leave a value empty to skip re-syncing that file.",
+  "countries": "",
+  "cities": "",
+  "airports": "",
+  "accommodationAreas": ""
+}

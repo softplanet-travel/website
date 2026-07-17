@@ -1,0 +1,6 @@
+accommodation_area_id,destination_id,city,name,short_recommendation,sort_order,status
+tokyo-ueno,日本-東京,東京,上野,交通方便、採買容易，適合第一次去東京與親子旅客。,1,open
+tokyo-asakusa,日本-東京,東京,淺草,氣氛悠閒、景點集中，適合喜歡老東京與慢步調的人。,2,open
+tokyo-station-ginza,日本-東京,東京,東京站／銀座,轉乘便利、購物餐廳多，適合重視效率與質感的旅客。,3,open
+tokyo-shinjuku,日本-東京,東京,新宿,交通路線多、夜晚熱鬧，適合行程範圍廣與喜歡逛街的人。,4,open
+tokyo-roppongi,日本-東京,東京,六本木,環境現代、夜景與藝文豐富，適合重視住宿質感的人。,5,open

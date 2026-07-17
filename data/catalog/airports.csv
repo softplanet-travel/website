@@ -1,0 +1,4 @@
+id,type,code,name,destination,timezone,arrival_buffer,departure_buffer,map_url,status
+HND,airport,HND,羽田機場,東京,Asia/Tokyo,90,150,https://maps.google.com/?q=Haneda+Airport,open
+NRT,airport,NRT,成田國際機場,東京,Asia/Tokyo,120,180,https://maps.google.com/?q=Narita+International+Airport,open
+ICN,airport,ICN,仁川國際機場,首爾,Asia/Seoul,120,180,https://maps.google.com/?q=Incheon+International+Airport,testing
