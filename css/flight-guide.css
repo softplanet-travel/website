@@ -1,0 +1,66 @@
+.fg-back{display:inline-flex;align-items:center;margin:14px 18px 0;padding:8px 4px;font-size:13px;font-weight:800}
+.flight-guide-grid{display:grid;gap:11px;padding:6px 18px 28px}
+.flight-guide-card{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:12px;width:100%;padding:14px 16px;border:0;border-radius:20px;background:#fff;box-shadow:0 6px 18px rgba(61,52,44,.055);color:var(--color-text);font:inherit;text-align:left;cursor:pointer}
+.flight-guide-icon{display:flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:14px;background:#f5e8dc;font-size:22px}
+.flight-guide-card-body h3{margin:0;font-size:15px;font-weight:800}
+.fg-card-subtitle{margin:2px 0 0;color:#9a755e;font-size:11px;font-weight:700}
+.fg-card-desc{margin:4px 0 0;color:#806b59;font-size:12px;line-height:1.5}
+.flight-guide-card-action{justify-self:end;align-self:center;color:#b0927b;font-size:12px;font-weight:800;white-space:nowrap;text-decoration:none}
+.flight-guide-card-action.fg-disabled{color:#c8bcae}
+a.flight-guide-card-action{color:#b36f48;padding:8px 12px;border-radius:11px;background:#f5e8dc}
+.flight-guide-hero{padding:26px 18px 10px;text-align:center}
+.flight-guide-hero-icon{display:inline-flex;width:64px;height:64px;align-items:center;justify-content:center;margin-bottom:10px;border-radius:20px;background:#f5e8dc;font-size:32px}
+.flight-guide-hero h1{margin:0;font-size:24px;line-height:1.3}
+.flight-guide-hero .fg-subtitle{margin:6px 0 0;color:#9a755e;font-size:13px;font-weight:700}
+.flight-guide-hero .fg-meta{margin:8px 0 0;color:#a38e7e;font-size:11px}
+.flight-guide-article{padding:8px 18px 32px;color:#5b4a3d;font-size:14px;line-height:1.8}
+.flight-guide-article>p:first-child{margin-top:0}
+.flight-guide-article .field-note{margin-top:14px;padding:10px;border-radius:11px;background:#fff1df;color:#805f4c;font-size:12px}
+.flight-guide-next{display:block;width:100%;margin-top:16px;padding:14px;border:0;border-radius:16px;background:#dcc39a;color:#5b4530;font-size:13px;font-weight:800;text-align:center;cursor:pointer}
+.fg-home-lede{margin:0 0 4px;color:#755f4e;font-size:var(--type-body-s,15px);line-height:1.7}
+.fg-home-lede:last-of-type{margin-bottom:0}
+.fg-step-intro{margin:0 18px 14px;color:#9a755e;font-size:12px;font-weight:700}
+.fg-step-timeline{padding:0 18px 6px}
+.fg-step-row{display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;width:100%;padding:0;border:0;background:transparent;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.fg-step-line{display:flex;flex-direction:column;align-items:center}
+.fg-step-dot{display:flex;flex-shrink:0;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;background:#ef8b56;color:#fff;font-weight:900;font-size:14px}
+.fg-step-connector{flex:1;width:2px;min-height:30px;margin:4px 0;background:#e7d8c9}
+.fg-step-content{padding-bottom:24px}
+.fg-step-label{display:block;margin-bottom:2px;color:#b36f48;font-size:11px;font-weight:900;letter-spacing:.04em}
+.fg-step-content h3{margin:0 0 3px;font-size:18px}
+.fg-step-subtitle{margin:0;color:#806b59;font-size:12px}
+.flight-guide-extra{padding:6px 18px 28px}
+.fg-extra-label{margin-bottom:8px}
+.fg-step-list{margin:0;padding-left:20px;display:grid;gap:10px}
+.fg-step-list li{padding-left:2px}
+.fg-step-row-wrap{margin-bottom:2px}
+.fg-step-cta{display:inline-block;margin-top:6px;color:#b36f48;font-size:11px;font-weight:800}
+.fg-step-external-wrap{margin:-16px 0 22px 46px}
+.fg-step-external{display:inline-flex;align-items:center;gap:4px;padding:7px 12px;border-radius:11px;background:#f5e8dc;color:#b36f48;font-size:11px;font-weight:800;text-decoration:none}
+.fg-step-external-pending{margin:0;color:#b0a293;font-size:11px}
+.flight-guide-hero .fg-hero-external{display:inline-flex;align-items:center;gap:4px;margin-top:10px;padding:8px 14px;border-radius:11px;background:#f5e8dc;color:#b36f48;font-size:12px;font-weight:800;text-decoration:none}
+.flight-guide-hero .fg-step-external-pending{margin-top:10px}
+.fg-confirm-modal{position:relative;width:min(calc(100% - 32px),480px);max-height:85vh;margin:auto;padding:0;border:0;border-radius:24px;background:#fffaf5;color:#3d342c}
+.fg-confirm-modal::backdrop{background:rgba(54,43,35,.4)}
+.fg-confirm-close{position:absolute;top:14px;right:14px;z-index:1;display:flex;width:34px;height:34px;align-items:center;justify-content:center;border:0;border-radius:50%;background:#f3ece5;color:#7a6555;font-size:20px}
+.fg-confirm-inner{max-height:85vh;overflow:auto;padding:54px 20px max(20px,env(safe-area-inset-bottom))}
+.fg-confirm-inner h2{margin:0 0 10px;font-size:19px}
+.fg-confirm-intro{margin:0 0 18px;color:#6f5746;font-size:13px;line-height:1.7}
+.fg-checklist{display:grid;gap:9px;margin:0 0 18px;padding:0;list-style:none}
+.fg-checklist label{display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:14px;background:#fff;font-size:13px;line-height:1.5;color:#4a3c30;cursor:pointer}
+.fg-checklist input[type=checkbox]{flex-shrink:0;width:20px;height:20px;margin-top:1px;accent-color:#ef8b56}
+.fg-offer-accordion{margin-bottom:18px;border-radius:16px;background:#fff4e7;overflow:hidden}
+.fg-offer-toggle{display:flex;width:100%;align-items:center;justify-content:space-between;padding:14px;border:0;background:transparent;color:#8a5c3f;font-size:13px;font-weight:800;text-align:left;cursor:pointer}
+.fg-offer-toggle::after{content:"›";transform:rotate(90deg);transition:transform .2s}
+.fg-offer-toggle[aria-expanded="true"]::after{transform:rotate(-90deg)}
+.fg-offer-panel{padding:0 14px 14px}
+.fg-offer-note{margin:0 0 12px;color:#8a7364;font-size:11px;line-height:1.6}
+.fg-offer-row{padding:10px 0;border-top:1px solid #f0dfcb}
+.fg-offer-row:first-of-type{border-top:0}
+.fg-offer-row h4{margin:0 0 3px;font-size:13px}
+.fg-offer-row p{margin:0 0 6px;color:#7c6656;font-size:11px;line-height:1.5}
+.fg-offer-btn{display:inline-block;color:#b36f48;font-size:11px;font-weight:800;text-decoration:none}
+.fg-confirm-done{padding-top:8px;border-top:1px solid #f0dfcb;text-align:center}
+.fg-confirm-cheer{margin:0 0 14px;color:#5b4a3d;font-size:13px;line-height:1.6}
+.fg-confirm-btn{width:100%}
+.fg-confirm-footnote{margin:10px 0 0;color:#a3907e;font-size:11px;line-height:1.6}
