@@ -1,0 +1,85 @@
+guide_id,module,parent_id,level,display_order,title,short_title,subtitle,description,icon,cover_image,button_text,page_type,content_slug,target_url,affiliate_group,affiliate_url,related_guides,estimated_reading_time,thread_url,youtube_url,tags,status,notes
+FG001,Flight,,step,1,Google Flights,Google Flights,找到便宜日期,學會使用價格日曆、彈性日期與價格追蹤，先找出合理航班。,flight,google-flights.jpg,開始學習,guide,google-flights,https://www.google.com/travel/flights,,,FG002,10,,,google flights;機票;價格日曆,published,
+FG002,Flight,,step,2,Skyscanner,Skyscanner,比較不同價格,比較航空公司與訂票平台價格，補查不同航班組合。,compare,skyscanner.jpg,開始學習,guide,skyscanner,https://www.skyscanner.com.tw/,,,FG003,8,,,skyscanner;比價,published,
+FG003,Flight,,step,3,KAYAK,KAYAK,判斷是否值得買,利用價格趨勢與彈性日期，協助判斷是否適合現在購買。,trending_up,kayak.jpg,開始學習,guide,kayak,https://www.tw.kayak.com/,,,FG004,8,,,kayak;價格趨勢,published,
+FG004,Flight,,step,4,MUMU陪你去訂票,MUMU陪你去訂票,選擇適合自己的訂票方式,比較訂票平台、航空公司官網與信用卡優惠後，選擇自己最安心的方式完成訂票。,shopping_cart,booking.jpg,開始訂票,index,mumu-booking,,,,FG100,0,,,訂票;平台;航空公司;信用卡,published,
+FG005,Flight,FG004,booking_method,1,常見訂票平台,訂票平台,一次搜尋多家航空公司,適合想使用中文介面、比較不同航空公司，或利用平台優惠完成訂票的人。優點是操作方便、價格容易比較；注意售後、退改與行李加購通常要經過平台處理。,language,,選擇訂票平台,index,booking-platforms,,,,,0,,,訂票平台;OTA;機票,published,
+FG006,Flight,FG004,booking_method,2,航空公司官網,航空公司官網,直接向航空公司完成訂票,適合重視行李加購、選位、里程與航班異動處理的人。優點是售後較直接；注意需要自行分別比較各家價格。,public,,選擇航空公司,index,airline-official-websites,,,,,0,,,航空公司;官網訂票,published,
+FG007,Flight,FG004,booking_method,3,信用卡與點數優惠,信用卡優惠,付款前先確認可用優惠,適合想使用指定平台折扣、現金回饋、哩程或點數折抵的人。活動可能限定卡別、指定連結、登錄期限或付款幣別。,credit_card,,查看信用卡優惠,index,flight-card-offers,,,,,0,,,信用卡;點數;哩程;機票優惠,published,活動內容需定期更新，不在按鈕文案寫死折扣。
+FG010,Flight,FG005,platform,1,Trip.com,Trip.com,亞洲航線與中文介面,適合亞洲航線、習慣繁體中文介面，以及想集中管理機票、住宿與交通的人。優點是產品完整、活動多；注意退改與售後通常由平台協助。,language,trip-logo.png,前往 Trip.com,external,,https://tw.trip.com/flights/,trip,https://www.trip.com/t/fl3G6g8IYV2,,0,,,trip;訂票平台;亞洲航線,published,正式上線前以 affiliate_url 覆蓋 target_url。
+FG011,Flight,FG005,platform,2,Booking.com,Booking.com,熟悉 Booking.com 的旅行者,適合已經使用 Booking.com 管理住宿、歐美或跨國行程的人。優點是介面熟悉；注意機票服務條款與住宿會員優惠並不一定相同。,language,booking-logo.png,前往 Booking.com 機票,external,,https://www.booking.com/flights/,booking,https://linkgo.one/s/iUlLD,,0,,,booking;訂票平台;歐美航線,published,正式上線前以 affiliate_url 覆蓋 target_url。
+FG012,Flight,FG005,platform,3,Agoda,Agoda,亞洲旅行與住宿使用者,適合經常使用 Agoda 訂住宿、希望機票與住宿一起搜尋的人。優點是帳戶與介面熟悉；注意 AgodaVIP 住宿優惠不一定適用機票。,language,agoda-logo.png,前往 Agoda 機票,external,,https://www.agoda.com/flights,agoda,https://afflink.one/s/PxVeE,,0,,,agoda;訂票平台;亞洲旅遊,published,正式上線前以 affiliate_url 覆蓋 target_url。
+FG020,Flight,FG006,airline_category,1,台灣航空,台灣航空,台灣出發最方便,適合從台灣直飛日本、韓國、港澳、東南亞及長程航線；中文介面、客服與付款通常較方便。,flag_tw,,查看台灣航空,index,taiwan-airlines,,,,,0,,,台灣航空;台灣出發;直飛,published,
+FG021,Flight,FG006,airline_category,2,日本航空,日本航空,日本與日本國內航線,適合台灣往返東京、大阪、名古屋、福岡、北海道、沖繩，以及需要銜接日本國內線的旅行。,flag_jp,,查看日本航空,index,japan-airlines,,,,,0,,,日本航空;日本自由行;日本國內線,published,
+FG022,Flight,FG006,airline_category,3,韓國航空,韓國航空,首爾、釜山與濟州航線,適合前往首爾、釜山與濟州；傳統航空與廉價航空選擇多，需特別確認托運行李規則。,flag_kr,,查看韓國航空,index,korea-airlines,,,,,0,,,韓國航空;首爾;釜山;濟州,published,
+FG023,Flight,FG006,airline_category,4,亞洲常見航空,亞洲常見航空,港澳與東南亞航線,適合香港、澳門、新加坡、馬來西亞、越南、泰國、菲律賓與亞洲樞紐轉機航線。,public,,查看亞洲常見航空,index,asia-airlines,,,,,0,,,亞洲航空;東南亞;港澳,published,
+FG024,Flight,FG006,airline_category,5,歐美／中東常見航空,歐美／中東常見航空,長程與轉機航線,適合歐洲、北美、中東與大洋洲長程旅行，可比較杜拜、杜哈、伊斯坦堡與歐洲主要樞紐轉機。,public,,查看歐美／中東常見航空,index,global-airlines,,,,,0,,,歐洲;美洲;中東;長程航線,published,
+FG030,Flight,FG020,airline,1,中華航空,中華航空,China Airlines,,flight,,前往中華航空官網,external,,https://www.china-airlines.com/tw/zh,,,,0,,,中華航空;China Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG031,Flight,FG020,airline,2,長榮航空,長榮航空,EVA Air,,flight,,前往長榮航空官網,external,,https://www.evaair.com/zh-tw/,,,,0,,,長榮航空;EVA Air;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG032,Flight,FG020,airline,3,星宇航空,星宇航空,STARLUX Airlines,,flight,,前往星宇航空官網,external,,https://www.starlux-airlines.com/zh-TW,,,,0,,,星宇航空;STARLUX Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG033,Flight,FG020,airline,4,台灣虎航,台灣虎航,Tigerair Taiwan,,flight,,前往台灣虎航官網,external,,https://www.tigerairtw.com/zh-tw,,,,0,,,台灣虎航;Tigerair Taiwan;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG034,Flight,FG021,airline,1,日本航空 JAL,日本航空 JAL,Japan Airlines,,flight,,前往日本航空 JAL官網,external,,https://www.jal.co.jp/tw/zhTW/,,,,0,,,日本航空 JAL;Japan Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG035,Flight,FG021,airline,2,全日空 ANA,全日空 ANA,All Nippon Airways,,flight,,前往全日空 ANA官網,external,,https://www.ana.co.jp/zh/tw/,,,,0,,,全日空 ANA;All Nippon Airways;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG036,Flight,FG021,airline,3,樂桃航空 Peach,樂桃航空 Peach,Peach Aviation,,flight,,前往樂桃航空 Peach官網,external,,https://www.flypeach.com/tw,,,,0,,,樂桃航空 Peach;Peach Aviation;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG037,Flight,FG021,airline,4,捷星日本 Jetstar Japan,捷星日本 Jetstar Japan,Jetstar Japan,,flight,,前往捷星日本 Jetstar Japan官網,external,,https://www.jetstar.com/tw/zh/home,,,,0,,,捷星日本 Jetstar Japan;Jetstar Japan;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG038,Flight,FG021,airline,5,Spring Japan,Spring Japan,Spring Japan,,flight,,前往Spring Japan官網,external,,https://jp.ch.com/,,,,0,,,Spring Japan;Spring Japan;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG039,Flight,FG021,airline,6,Skymark Airlines,Skymark Airlines,Skymark Airlines,,flight,,前往Skymark Airlines官網,external,,https://www.skymark.co.jp/zh_TW/,,,,0,,,Skymark Airlines;Skymark Airlines;日本國內航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG040,Flight,FG021,airline,7,AIRDO,AIRDO,AIRDO,,flight,,前往AIRDO官網,external,,https://www.airdo.jp/,,,,0,,,AIRDO;AIRDO;日本國內航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG041,Flight,FG021,airline,8,Solaseed Air,Solaseed Air,Solaseed Air,,flight,,前往Solaseed Air官網,external,,https://www.solaseedair.jp/,,,,0,,,Solaseed Air;Solaseed Air;日本國內航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG042,Flight,FG022,airline,1,大韓航空,大韓航空,Korean Air,,flight,,前往大韓航空官網,external,,https://www.koreanair.com/,,,,0,,,大韓航空;Korean Air;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG043,Flight,FG022,airline,2,韓亞航空,韓亞航空,Asiana Airlines,,flight,,前往韓亞航空官網,external,,https://flyasiana.com/,,,,0,,,韓亞航空;Asiana Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG044,Flight,FG022,airline,3,濟州航空,濟州航空,Jeju Air,,flight,,前往濟州航空官網,external,,https://www.jejuair.net/,,,,0,,,濟州航空;Jeju Air;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG045,Flight,FG022,airline,4,德威航空,德威航空,T'way Air,,flight,,前往德威航空官網,external,,https://www.twayair.com/,,,,0,,,德威航空;T'way Air;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG046,Flight,FG022,airline,5,真航空,真航空,Jin Air,,flight,,前往真航空官網,external,,https://www.jinair.com/,,,,0,,,真航空;Jin Air;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG047,Flight,FG022,airline,6,釜山航空,釜山航空,Air Busan,,flight,,前往釜山航空官網,external,,https://www.airbusan.com/,,,,0,,,釜山航空;Air Busan;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG048,Flight,FG022,airline,7,易斯達航空,易斯達航空,Eastar Jet,,flight,,前往易斯達航空官網,external,,https://www.eastarjet.com/,,,,0,,,易斯達航空;Eastar Jet;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG049,Flight,FG022,airline,8,Aero K,Aero K,Aero K,,flight,,前往Aero K官網,external,,https://www.aerok.com/,,,,0,,,Aero K;Aero K;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG050,Flight,FG022,airline,9,Air Premia,Air Premia,Air Premia,,flight,,前往Air Premia官網,external,,https://www.airpremia.com/,,,,0,,,Air Premia;Air Premia;混合型航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG051,Flight,FG023,airline,1,國泰航空,國泰航空,Cathay Pacific,,flight,,前往國泰航空官網,external,,https://www.cathaypacific.com/,,,,0,,,國泰航空;Cathay Pacific;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG052,Flight,FG023,airline,2,香港快運,香港快運,HK Express,,flight,,前往香港快運官網,external,,https://www.hkexpress.com/,,,,0,,,香港快運;HK Express;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG053,Flight,FG023,airline,3,香港航空,香港航空,Hong Kong Airlines,,flight,,前往香港航空官網,external,,https://www.hongkongairlines.com/,,,,0,,,香港航空;Hong Kong Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG054,Flight,FG023,airline,4,新加坡航空,新加坡航空,Singapore Airlines,,flight,,前往新加坡航空官網,external,,https://www.singaporeair.com/,,,,0,,,新加坡航空;Singapore Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG055,Flight,FG023,airline,5,酷航,酷航,Scoot,,flight,,前往酷航官網,external,,https://www.flyscoot.com/,,,,0,,,酷航;Scoot;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG056,Flight,FG023,airline,6,亞洲航空,亞洲航空,AirAsia,,flight,,前往亞洲航空官網,external,,https://www.airasia.com/,,,,0,,,亞洲航空;AirAsia;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG057,Flight,FG023,airline,7,馬來西亞航空,馬來西亞航空,Malaysia Airlines,,flight,,前往馬來西亞航空官網,external,,https://www.malaysiaairlines.com/,,,,0,,,馬來西亞航空;Malaysia Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG058,Flight,FG023,airline,8,Batik Air Malaysia,Batik Air Malaysia,Batik Air Malaysia,,flight,,前往Batik Air Malaysia官網,external,,https://www.batikair.com.my/,,,,0,,,Batik Air Malaysia;Batik Air Malaysia;傳統／混合型航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG059,Flight,FG023,airline,9,越南航空,越南航空,Vietnam Airlines,,flight,,前往越南航空官網,external,,https://www.vietnamairlines.com/,,,,0,,,越南航空;Vietnam Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG060,Flight,FG023,airline,10,越捷航空,越捷航空,VietJet Air,,flight,,前往越捷航空官網,external,,https://www.vietjetair.com/,,,,0,,,越捷航空;VietJet Air;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG061,Flight,FG023,airline,11,泰國航空,泰國航空,Thai Airways,,flight,,前往泰國航空官網,external,,https://www.thaiairways.com/,,,,0,,,泰國航空;Thai Airways;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG062,Flight,FG023,airline,12,泰國亞洲航空,泰國亞洲航空,Thai AirAsia,,flight,,前往泰國亞洲航空官網,external,,https://www.airasia.com/,,,,0,,,泰國亞洲航空;Thai AirAsia;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG063,Flight,FG023,airline,13,泰國獅子航空,泰國獅子航空,Thai Lion Air,,flight,,前往泰國獅子航空官網,external,,https://www.lionairthai.com/,,,,0,,,泰國獅子航空;Thai Lion Air;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG064,Flight,FG023,airline,14,菲律賓航空,菲律賓航空,Philippine Airlines,,flight,,前往菲律賓航空官網,external,,https://www.philippineairlines.com/,,,,0,,,菲律賓航空;Philippine Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG065,Flight,FG023,airline,15,宿霧太平洋航空,宿霧太平洋航空,Cebu Pacific,,flight,,前往宿霧太平洋航空官網,external,,https://www.cebupacificair.com/,,,,0,,,宿霧太平洋航空;Cebu Pacific;廉價航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG066,Flight,FG023,airline,16,汶萊皇家航空,汶萊皇家航空,Royal Brunei Airlines,,flight,,前往汶萊皇家航空官網,external,,https://www.flyroyalbrunei.com/,,,,0,,,汶萊皇家航空;Royal Brunei Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG067,Flight,FG023,airline,17,印尼航空,印尼航空,Garuda Indonesia,,flight,,前往印尼航空官網,external,,https://www.garuda-indonesia.com/,,,,0,,,印尼航空;Garuda Indonesia;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG068,Flight,FG024,airline,1,阿聯酋航空,阿聯酋航空,Emirates,,flight,,前往阿聯酋航空官網,external,,https://www.emirates.com/tw/chinese/,,,,0,,,阿聯酋航空;Emirates;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG069,Flight,FG024,airline,2,卡達航空,卡達航空,Qatar Airways,,flight,,前往卡達航空官網,external,,https://www.qatarairways.com/,,,,0,,,卡達航空;Qatar Airways;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG070,Flight,FG024,airline,3,阿提哈德航空,阿提哈德航空,Etihad Airways,,flight,,前往阿提哈德航空官網,external,,https://www.etihad.com/,,,,0,,,阿提哈德航空;Etihad Airways;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG071,Flight,FG024,airline,4,土耳其航空,土耳其航空,Turkish Airlines,,flight,,前往土耳其航空官網,external,,https://www.turkishairlines.com/,,,,0,,,土耳其航空;Turkish Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG072,Flight,FG024,airline,5,漢莎航空,漢莎航空,Lufthansa,,flight,,前往漢莎航空官網,external,,https://www.lufthansa.com/,,,,0,,,漢莎航空;Lufthansa;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG073,Flight,FG024,airline,6,法國航空,法國航空,Air France,,flight,,前往法國航空官網,external,,https://wwws.airfrance.com.tw/,,,,0,,,法國航空;Air France;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG074,Flight,FG024,airline,7,荷蘭皇家航空 KLM,荷蘭皇家航空 KLM,KLM Royal Dutch Airlines,,flight,,前往荷蘭皇家航空 KLM官網,external,,https://www.klm.com.tw/,,,,0,,,荷蘭皇家航空 KLM;KLM Royal Dutch Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG075,Flight,FG024,airline,8,英國航空,英國航空,British Airways,,flight,,前往英國航空官網,external,,https://www.britishairways.com/,,,,0,,,英國航空;British Airways;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG076,Flight,FG024,airline,9,芬蘭航空,芬蘭航空,Finnair,,flight,,前往芬蘭航空官網,external,,https://www.finnair.com/tw-zh,,,,0,,,芬蘭航空;Finnair;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG077,Flight,FG024,airline,10,瑞士國際航空,瑞士國際航空,SWISS,,flight,,前往瑞士國際航空官網,external,,https://www.swiss.com/,,,,0,,,瑞士國際航空;SWISS;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG078,Flight,FG024,airline,11,奧地利航空,奧地利航空,Austrian Airlines,,flight,,前往奧地利航空官網,external,,https://www.austrian.com/,,,,0,,,奧地利航空;Austrian Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG079,Flight,FG024,airline,12,美國航空,美國航空,American Airlines,,flight,,前往美國航空官網,external,,https://www.aa.com/,,,,0,,,美國航空;American Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG080,Flight,FG024,airline,13,聯合航空,聯合航空,United Airlines,,flight,,前往聯合航空官網,external,,https://www.united.com/,,,,0,,,聯合航空;United Airlines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG081,Flight,FG024,airline,14,達美航空,達美航空,Delta Air Lines,,flight,,前往達美航空官網,external,,https://www.delta.com/,,,,0,,,達美航空;Delta Air Lines;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG082,Flight,FG024,airline,15,加拿大航空,加拿大航空,Air Canada,,flight,,前往加拿大航空官網,external,,https://www.aircanada.com/,,,,0,,,加拿大航空;Air Canada;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG083,Flight,FG024,airline,16,維珍航空,維珍航空,Virgin Atlantic,,flight,,前往維珍航空官網,external,,https://www.virginatlantic.com/,,,,0,,,維珍航空;Virgin Atlantic;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG084,Flight,FG024,airline,17,澳洲航空,澳洲航空,Qantas,,flight,,前往澳洲航空官網,external,,https://www.qantas.com/,,,,0,,,澳洲航空;Qantas;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG085,Flight,FG024,airline,18,紐西蘭航空,紐西蘭航空,Air New Zealand,,flight,,前往紐西蘭航空官網,external,,https://www.airnewzealand.com/,,,,0,,,紐西蘭航空;Air New Zealand;傳統航空;官方網站,published,官方網站按鈕；網址異動時更新 target_url。
+FG090,Flight,FG007,credit_offer,1,Visa 優惠,Visa,指定平台與卡別優惠,查看 Visa 台灣目前提供的旅遊與機票合作優惠；活動可能需要指定入口與符合資格的卡片。,credit_card,,查看 Visa 優惠,external,,https://www.visa.com.tw/zh_tw/visa-offers-and-perks/,,,,0,,,Visa;信用卡優惠,published,活動會變動，頁面應顯示最後確認日期。
+FG091,Flight,FG007,credit_offer,2,Mastercard 優惠,Mastercard,依卡別與發卡銀行查看,查看 Mastercard 台灣優惠活動；適用卡別、發卡銀行、登錄與期間依活動規則。,credit_card,,查看 Mastercard 優惠,external,,https://www.mastercard.com.tw/zh-tw/personal/offers-and-promotions.html,,,,0,,,Mastercard;信用卡優惠,published,活動會變動，頁面應顯示最後確認日期。
+FG092,Flight,FG007,credit_offer,3,American Express Travel,American Express,會員旅遊與點數服務,適合符合資格的美國運通持卡人查看旅遊服務、點數或會員票價，實際福利依卡別與地區而異。,credit_card,,查看 Amex Travel,external,,https://www.americanexpress.com/en-us/travel/flights/,,,,0,,,American Express;Amex Travel;點數,published,台灣持卡人實際可用內容須依發卡地區與卡別確認。
+FG093,Flight,FG007,credit_offer,4,發卡銀行優惠,銀行優惠,確認海外消費與旅遊加碼,提醒使用者查看自己的發卡銀行是否有海外消費、指定旅遊平台、分期、哩程、旅遊保險或機場接送優惠。,account_balance,,查看說明,guide,issuer-bank-flight-offers,,,,,0,,,發卡銀行;海外消費;哩程;旅遊保險,published,
+FG100,Flight,,knowledge_root,5,機票知識,機票知識,訂票前後都用得到的提醒,集中整理行李規則、廉航注意事項、購票時機與常見問題。,school,,查看機票知識,index,flight-knowledge,,,,,0,,,機票知識;FAQ;行李;廉航,published,
+FG101,Flight,FG100,knowledge_category,1,行李規則,行李規則,先確認尺寸、重量與攜帶限制,航空公司的手提與托運額度可能依航線、票價方案與會員資格不同，實際仍以承運航空公司規定為準。,luggage,,查看行李規則,index,flight-baggage-rules,,,,,0,,,行李;手提行李;托運,published,
+FG102,Flight,FG100,knowledge_category,2,廉價航空,廉價航空,票價低但附加服務多為另購,廉航票價通常不含托運、選位與餐食，付款前要確認完整總價與退改限制。,flight_takeoff,,查看廉航攻略,index,budget-airline-guide,,,,,0,,,廉航;行李;選位;餐食,published,
+FG103,Flight,FG100,knowledge_category,3,常見問題,機票 FAQ,破解常見機票迷思,整理購買時機、無痕模式、平台價差與付款前確認事項。,help,,查看常見問題,index,flight-faq,,,,,0,,,FAQ;機票問題;訂票技巧,published,
+FG110,Flight,FG101,knowledge_article,1,手提行李限制,手提行李限制,尺寸、重量與件數,說明手提行李與個人物品的差異，以及尺寸、重量、液體、行動電源與登機門查驗注意事項。,luggage,,閱讀攻略,guide,carry-on-baggage-rules,,,,,6,,,手提行李;登機箱;液體;行動電源,published,
+FG111,Flight,FG101,knowledge_article,2,托運行李規定,托運行李規定,重量制、件數制與禁運物品,說明托運額度、超重費、聯程行李、嬰兒推車與不可托運物品。,luggage,,閱讀攻略,guide,checked-baggage-rules,,,,,6,,,托運行李;超重;聯程行李,published,
+FG120,Flight,FG102,knowledge_article,1,廉航注意事項,廉航注意事項,總價不只基本票價,說明行李、選位、餐食、報到、機場、改票與退票限制，協助比較廉航與傳統航空的完整成本。,flight_takeoff,,閱讀攻略,guide,budget-airline-tips,,,,,8,,,廉航;附加費;行李;選位,published,
+FG130,Flight,FG103,knowledge_article,1,機票什麼時候買？,機票什麼時候買？,沒有適用所有航線的固定答案,教使用者利用價格日曆、追蹤與合理價格區間判斷，而不是迷信固定星期或幾個月前一定最便宜。,schedule,,閱讀解答,guide,when-to-buy-flights,,,,,5,,,購票時機;價格追蹤;機票,published,
+FG131,Flight,FG103,knowledge_article,2,無痕模式有用嗎？,無痕模式有用嗎？,無痕模式不保證出現更低價格,說明機票價格主要受到庫存、票價艙等、搜尋條件、地區與幣別影響；無痕模式可減少部分個人化資料，但不是固定降價工具。,visibility_off,,閱讀解答,guide,incognito-flight-prices,,,,,4,,,無痕模式;機票迷思;價格,published,
