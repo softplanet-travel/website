@@ -21,32 +21,58 @@
         <div>
           <p class="eyebrow">My Space・Travel Identity</p>
           <h1 id="accountTitle">每一趟旅行，都值得好好保存。</h1>
-          <p id="accountSubtitle">登入後即可同步你的旅行、收藏與攻略，換手機也不怕遺失。</p>
+          <p id="accountSubtitle">登入後，你的旅行就能陪你到不同的裝置裡。</p>
         </div>
         <button class="primary-btn account-action" id="accountAction" type="button" hidden>使用 Google 登入</button>
         <p class="status-message" id="accountStatus" role="status" aria-live="polite"></p>
       </section>
 
-      <section class="profile-settings workspace-card" id="profileSettings" aria-labelledby="profileTitle">
-        <p class="eyebrow">帳號設定</p>
-        <h2 id="profileTitle">想讓 MUMU 怎麼稱呼你呢？</h2>
-        <p>可以是暱稱、英文名字或家人熟悉的稱呼，不需要使用真實姓名。</p>
-        <form class="workspace-form" id="preferredNameForm">
-          <label>顯示稱呼
-            <input id="preferredName" name="preferred_name" maxlength="20" required placeholder="例如：花花、小天、Joy">
-            <small class="char-count"><span id="preferredNameCount">0</span> / 20</small>
-          </label>
-          <button class="primary-btn" type="submit">儲存稱呼</button>
-          <p class="status-message" id="profileStatus" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-
-      <section class="my-menu" aria-label="我的功能">
-        <a href="favorites.html"><span class="menu-icon tone-peach" aria-hidden="true">♥</span><span><strong>我的收藏</strong><small>建立專屬旅行靈感庫，隨時加入下一趟旅行</small></span><span aria-hidden="true">›</span></a>
-        <a href="trips.html"><span class="menu-icon tone-sand" aria-hidden="true">🧳</span><span><strong>我的旅行</strong><small>看看正在期待的旅程</small></span><span aria-hidden="true">›</span></a>
-        <a href="guides.html"><span class="menu-icon tone-sage" aria-hidden="true">📝</span><span><strong>我的攻略</strong><small>收藏實用攻略，也能整理自己的旅行筆記</small></span><span aria-hidden="true">›</span></a>
-        <a href="tools.html"><span class="menu-icon tone-aqua" aria-hidden="true">🧩</span><span><strong>旅行積木</strong><small>查看可加入每趟旅行的功能</small></span><span aria-hidden="true">›</span></a>
-        <a href="#profileSettings"><span class="menu-icon tone-lavender" aria-hidden="true">⚙️</span><span><strong>帳號設定</strong><small>修改 MUMU 對你的稱呼</small></span><span aria-hidden="true">›</span></a>
+      <section class="my-accordion" aria-label="我的功能">
+        <div class="my-accordion-item">
+          <button class="my-accordion-header" type="button" aria-expanded="false"><span class="menu-icon tone-peach" aria-hidden="true">♥</span><span><strong>我的收藏</strong><small>建立專屬旅行靈感庫，隨時加入下一趟旅行</small></span><span class="trip-accordion-caret" aria-hidden="true">›</span></button>
+          <div class="my-accordion-panel" hidden>
+            <p>把喜歡的景點、美食與住宿收藏起來，安排下一趟旅行時隨時取用。</p>
+            <a class="primary-link" href="favorites.html">前往我的收藏 →</a>
+          </div>
+        </div>
+        <div class="my-accordion-item">
+          <button class="my-accordion-header" type="button" aria-expanded="false"><span class="menu-icon tone-sand" aria-hidden="true">🧳</span><span><strong>我的旅行</strong><small>查看正在規劃與即將出發的旅程</small></span><span class="trip-accordion-caret" aria-hidden="true">›</span></button>
+          <div class="my-accordion-panel" hidden>
+            <p>查看正在規劃與即將出發的旅程，或建立一趟新的旅行。</p>
+            <a class="primary-link" href="trips.html">前往我的旅行 →</a>
+          </div>
+        </div>
+        <div class="my-accordion-item">
+          <button class="my-accordion-header" type="button" aria-expanded="false"><span class="menu-icon tone-sage" aria-hidden="true">📝</span><span><strong>我的攻略</strong><small>收藏實用攻略，也能整理自己的旅行筆記</small></span><span class="trip-accordion-caret" aria-hidden="true">›</span></button>
+          <div class="my-accordion-panel" hidden>
+            <p>收藏實用攻略，也能整理自己的旅行筆記。</p>
+            <a class="primary-link" href="guides.html">前往我的攻略 →</a>
+          </div>
+        </div>
+        <div class="my-accordion-item">
+          <button class="my-accordion-header" type="button" aria-expanded="false"><span class="menu-icon tone-aqua" aria-hidden="true">🧩</span><span><strong>我的工具</strong><small>收藏與管理旅行中會使用的小工具</small></span><span class="trip-accordion-caret" aria-hidden="true">›</span></button>
+          <div class="my-accordion-panel" hidden>
+            <p>世界時間、匯率換算、單位換算可依需要加入旅行；當地天氣、旅行花費與地鐵圖則由每趟旅行自動提供，不必手動加入。</p>
+            <a class="primary-link" href="tools.html">前往我的工具 →</a>
+          </div>
+        </div>
+        <div class="my-accordion-item">
+          <button class="my-accordion-header" type="button" aria-expanded="false"><span class="menu-icon tone-lavender" aria-hidden="true">⚙️</span><span><strong>帳號設定</strong><small>修改 MUMU 對你的稱呼與登入同步設定</small></span><span class="trip-accordion-caret" aria-hidden="true">›</span></button>
+          <div class="my-accordion-panel" hidden>
+            <div class="profile-settings" aria-labelledby="profileTitle">
+              <h2 id="profileTitle">想讓 MUMU 怎麼稱呼你呢？</h2>
+              <p>可以是暱稱、英文名字或家人熟悉的稱呼，不需要使用真實姓名。</p>
+              <form class="workspace-form" id="preferredNameForm">
+                <label>顯示稱呼
+                  <input id="preferredName" name="preferred_name" maxlength="20" required placeholder="例如：花花、小天、Joy">
+                  <small class="char-count"><span id="preferredNameCount">0</span> / 20</small>
+                </label>
+                <button class="primary-btn" type="submit">儲存稱呼</button>
+                <p class="status-message" id="profileStatus" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -63,6 +89,7 @@
   <script src="js/supabase-client.js"></script>
   <script src="js/travel-store.js"></script>
   <script src="js/profile-service.js"></script>
+  <script src="js/trip-accordion.js"></script>
   <script src="js/account.js?v=20260713-refinement"></script>
   <script src="js/script.js"></script>
 </body>
