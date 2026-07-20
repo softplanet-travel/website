@@ -4,5 +4,6 @@
   "cities": "",
   "airports": "",
   "accommodationAreas": "",
-  "flightGuide": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSzwUnh4_aUvXlQE_ZRkFwfS6-DoCjvZABScTJdDb98bUBXZh6M9BVInVgnlvrOcBOf5dmsWXFI3Nhj/pub?gid=2121029857&single=true&output=csv"
+  "flightGuide": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSzwUnh4_aUvXlQE_ZRkFwfS6-DoCjvZABScTJdDb98bUBXZh6M9BVInVgnlvrOcBOf5dmsWXFI3Nhj/pub?gid=2121029857&single=true&output=csv",
+  "airportTransport": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSzwUnh4_aUvXlQE_ZRkFwfS6-DoCjvZABScTJdDb98bUBXZh6M9BVInVgnlvrOcBOf5dmsWXFI3Nhj/pub?gid=1314149123&single=true&output=csv"
 }

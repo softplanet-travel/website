@@ -9,6 +9,7 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
   await window.SoftPlanetCatalogService.ready();
+  await window.SoftPlanetAirportTransport.ready();
   const tripId = new URLSearchParams(location.search).get("id");
   const $ = (id) => document.getElementById(id);
   const escape = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -1582,17 +1583,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // ---- Arrival Transport Handoff (Sprint 1C) ----
+  // ---- Arrival Transport Handoff (Sprint 1C; wired to real data in Data Binding Micro Sprint 02) ----
   // Deliberately separate from AIRPORT_TRANSPORT_RECORDS/openTransportPicker above (the departure-
   // side "查看機場交通" entry reached from the locked Departure Boundary block - not touched this
-  // sprint). No real arrival-side transit-option or charter-service data exists anywhere in this
-  // project (verified against every JS/JSON file and the Supabase migrations) - both stay empty
-  // until a real Master is imported; every card surface below shows an honest empty state instead
-  // of a fabricated card, price, route, or QR code.
-  const ARRIVAL_TRANSIT_RECORDS = {};
-  const ARRIVAL_CHARTER_RECORDS = {};
-  function arrivalTransitOptions(hubId) { return (ARRIVAL_TRANSIT_RECORDS[hubId] || []).filter((r) => r.status === "published"); }
-  function arrivalCharterOptions(hubId) { return (ARRIVAL_CHARTER_RECORDS[hubId] || []).filter((r) => r.status === "published"); }
+  // sprint). Real data now comes from js/airport-transport-service.js (32_airport_transport Google
+  // Sheet, direction=arrival rows) keyed by the same airport id/code HUBS already uses - every card
+  // surface below still shows the existing honest empty state whenever a given airport has no
+  // published rows for that transport_type.
+  function arrivalTransitOptions(hubId) { return window.SoftPlanetAirportTransport.transitOptions(hubId); }
+  function arrivalCharterOptions(hubId) { return window.SoftPlanetAirportTransport.charterOptions(hubId); }
 
   // Marks arrival transport as "decided" (any of transit/charter/self-arranged) so the deferred-add
   // follow-up loop knows to stop asking. item_id prefix is distinct from the departure-side
@@ -1634,7 +1633,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function showArrivalTransitList(dialog, boundary, onDone) {
     const options = arrivalTransitOptions(boundary.arrival_hub_id);
-    const cardsHtml = options.map((r) => `<article>
+    const cardsHtml = options.map((r) => `<article class="airport-transport-card">
         <div><h3>${escape(r.title)}</h3><p>${escape(r.summary || "")}</p>
         ${r.boarding_location ? `<p class="field-note">上車位置：${escape(r.boarding_location)}</p>` : ""}
         ${r.drop_off ? `<p class="field-note">主要下車／服務區：${escape(r.drop_off)}</p>` : ""}
@@ -1644,7 +1643,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </article>`).join("");
     const body = `<div class="mumu-assistant-body">
       <button type="button" class="text-button" id="arrivalTransportBack">‹ 上一步</button>
-      ${options.length ? `<div class="rec-card-list">${cardsHtml}</div>` : `<div class="soft-empty compact-empty"><span class="mumu-asset" data-mumu aria-hidden="true"></span><h3>目前尚未整理這個機場到市區的正式大眾運輸資訊</h3><p>可以先選自行前往市區，或晚點再回來安排。</p></div>`}
+      ${options.length ? `<div class="airport-transport-card-list">${cardsHtml}</div>` : `<div class="soft-empty compact-empty"><span class="mumu-asset" data-mumu aria-hidden="true"></span><h3>目前尚未整理這個機場到市區的正式大眾運輸資訊</h3><p>可以先選自行前往市區，或晚點再回來安排。</p></div>`}
     </div>`;
     updateDialogContent(dialog, "MUMU 行程助手", body);
     dialog.querySelector("#arrivalTransportBack").onclick = () => openArrivalTransportHandoff(onDone);
@@ -1660,7 +1659,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function showArrivalCharterList(dialog, boundary, onDone) {
     const options = arrivalCharterOptions(boundary.arrival_hub_id);
-    const cardsHtml = options.map((r) => `<article>
+    const cardsHtml = options.map((r) => `<article class="airport-transport-card">
         <div><h3>${escape(r.title)}</h3><p>${escape(r.summary || "")}</p>
         ${r.suited_for ? `<p class="field-note">適合對象：${escape(r.suited_for)}</p>` : ""}
         ${r.service_area ? `<p class="field-note">服務區域：${escape(r.service_area)}</p>` : ""}
@@ -1669,7 +1668,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </article>`).join("");
     const body = `<div class="mumu-assistant-body">
       <button type="button" class="text-button" id="arrivalTransportBack">‹ 上一步</button>
-      ${options.length ? `<div class="rec-card-list">${cardsHtml}</div>` : `<div class="soft-empty compact-empty"><span class="mumu-asset" data-mumu aria-hidden="true"></span><h3>目前尚未整理這個機場的正式包車服務資訊</h3><p>可以先選自行前往市區，或晚點再回來安排。</p></div>`}
+      ${options.length ? `<div class="airport-transport-card-list">${cardsHtml}</div>` : `<div class="soft-empty compact-empty"><span class="mumu-asset" data-mumu aria-hidden="true"></span><h3>目前尚未整理這個機場的正式包車服務資訊</h3><p>可以先選自行前往市區，或晚點再回來安排。</p></div>`}
     </div>`;
     updateDialogContent(dialog, "MUMU 行程助手", body);
     dialog.querySelector("#arrivalTransportBack").onclick = () => openArrivalTransportHandoff(onDone);

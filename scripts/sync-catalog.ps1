@@ -19,7 +19,8 @@ param(
   [string]$CitiesUrl,
   [string]$AirportsUrl,
   [string]$AccommodationAreasUrl,
-  [string]$FlightGuideUrl
+  [string]$FlightGuideUrl,
+  [string]$AirportTransportUrl
 )
 
 $ErrorActionPreference = "Stop"
@@ -37,6 +38,7 @@ if (Test-Path $sourcesPath) {
     airports              = $json.airports
     accommodationAreas    = $json.accommodationAreas
     flightGuide           = $json.flightGuide
+    airportTransport      = $json.airportTransport
   }
 }
 
@@ -46,6 +48,7 @@ $targets = @(
   @{ Name = "airports"; Url = if ($AirportsUrl) { $AirportsUrl } else { $sources.airports }; Dir = $dataDir; File = "airports.csv" }
   @{ Name = "accommodationAreas"; Url = if ($AccommodationAreasUrl) { $AccommodationAreasUrl } else { $sources.accommodationAreas }; Dir = $dataDir; File = "accommodation-areas.csv" }
   @{ Name = "flightGuide"; Url = if ($FlightGuideUrl) { $FlightGuideUrl } else { $sources.flightGuide }; Dir = $flightsDir; File = "33-flight-knowledge-master.csv" }
+  @{ Name = "airportTransport"; Url = if ($AirportTransportUrl) { $AirportTransportUrl } else { $sources.airportTransport }; Dir = $dataDir; File = "airport-transport.csv" }
 )
 
 foreach ($dir in @($dataDir, $flightsDir)) {
@@ -95,4 +98,4 @@ if ($failed.Count -gt 0) {
   exit 1
 }
 Write-Host ""
-Write-Host "Review the changes in data\catalog\*.csv and data\flights\33-flight-knowledge-master.csv, then commit and deploy as usual."
+Write-Host "Review the changes in data\catalog\*.csv (including airport-transport.csv) and data\flights\33-flight-knowledge-master.csv, then commit and deploy as usual."
